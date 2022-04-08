@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
 
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="246.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="80.0" layoutY="120.0" text="Nom d'utilisateur" />
+            <Label layoutX="80.0" layoutY="160.0" text="Mot de passe" />
+            <TextField layoutX="252.0" layoutY="116.0" prefHeight="25.0" prefWidth="243.0" />
+            <Label layoutX="258.0" layoutY="14.0" text="Authentification" />
+            <Button layoutX="422.0" layoutY="221.0" mnemonicParsing="false" text="Connexion" />
+            <RadioButton layoutX="261.0" layoutY="80.0" mnemonicParsing="false" text="Formatteur" />
+            <RadioButton layoutX="387.0" layoutY="80.0" mnemonicParsing="false" text="Administrateur" />
+            <Label layoutX="80.0" layoutY="80.0" text="Je suis" />
+            <PasswordField layoutX="253.0" layoutY="156.0" prefHeight="25.0" prefWidth="242.0" />
+            <Hyperlink layoutX="333.0" layoutY="183.0" text="J'ai oublié mon mot de passe" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="201.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Pharmacie-logo.png" />
+               </image>
+            </ImageView>
+            <Hyperlink layoutX="324.0" layoutY="199.0" text="Je n'ai pas de compte. s'inscrire" />
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <Label text="Copyrights reserved @ISIKA FHF" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <Label text="Annuaire Stagiaire" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
