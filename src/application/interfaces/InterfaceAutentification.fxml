@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane prefHeight="246.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -28,7 +27,7 @@
             <Hyperlink layoutX="333.0" layoutY="183.0" text="J'ai oublié mon mot de passe" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="201.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Pharmacie-logo.png" />
+                  <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
             <Hyperlink layoutX="324.0" layoutY="199.0" text="Je n'ai pas de compte. s'inscrire" />

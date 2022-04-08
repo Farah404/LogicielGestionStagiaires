@@ -75,7 +75,7 @@
             </Pane>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="703.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Pharmacie-logo.png" />
+                  <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
             <Separator layoutX="536.0" layoutY="230.0" prefHeight="5.0" prefWidth="360.0" />

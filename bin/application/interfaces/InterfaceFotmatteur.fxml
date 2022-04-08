@@ -58,7 +58,6 @@
             </TableView>
             <Button layoutX="550.0" layoutY="280.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Ajouter un stagiaire" />
             <Button layoutX="550.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Modifier le stagiaire" />
-            <Button layoutX="550.0" layoutY="340.0" mnemonicParsing="false" prefWidth="135.0" text="Supprimer le stagiaire" />
             <Pane layoutX="547.0" layoutY="16.0" prefHeight="229.0" prefWidth="378.0">
                <children>
                   <Label layoutX="25.0" layoutY="35.0" text="Nom" />
@@ -76,7 +75,7 @@
             </Pane>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="703.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Pharmacie-logo.png" />
+                  <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
             <Separator layoutX="536.0" layoutY="230.0" prefHeight="5.0" prefWidth="360.0" />
