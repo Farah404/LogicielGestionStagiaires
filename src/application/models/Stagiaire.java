@@ -4,7 +4,7 @@ public class Stagiaire {
     //attributes
     private String nom;
     private String prenom;
-    private String departement;
+    private int departement;
     private String promotion;
     private int annee;
 
@@ -13,7 +13,7 @@ public class Stagiaire {
     }
 
     //Constructor using attibutes
-    public Stagiaire(String nom, String prenom, String departement, String promotion, int annee) {
+    public Stagiaire(String nom, String prenom, int departement, String promotion, int annee) {
 	super();
 	this.nom = nom;
 	this.prenom = prenom;
@@ -37,11 +37,11 @@ public class Stagiaire {
 	this.prenom = prenom;
     }
 
-    public String getDepartement() {
+    public int getDepartement() {
 	return departement;
     }
 
-    public void setDepartement(String departement) {
+    public void setDepartement(int departement) {
 	this.departement = departement;
     }
 
