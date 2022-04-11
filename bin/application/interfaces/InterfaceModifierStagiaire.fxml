@@ -28,7 +28,7 @@
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Button layoutX="113.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Modifier le Stagiaire" />
+            <Button layoutX="113.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Valider les modifications" />
             <Button layoutX="113.0" layoutY="337.0" mnemonicParsing="false" prefWidth="150.0" text="Retour" />
             <Button layoutX="113.0" layoutY="304.0" mnemonicParsing="false" prefWidth="150.0" text="Supprimer le Stagiaire" />
          </children>

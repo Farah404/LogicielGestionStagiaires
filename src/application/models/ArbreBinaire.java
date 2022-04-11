@@ -123,10 +123,3 @@ public class ArbreBinaire <E extends Comparable<E> >{
 
 
 }
-
-
-
-
-
-
-

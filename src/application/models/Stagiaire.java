@@ -2,11 +2,11 @@ package application.models;
 
 public class Stagiaire {
     //attributes
-    private String nom;
-    private String prenom;
-    private int departement;
-    private String promotion;
-    private int annee;
+    public String nom;
+    public String prenom;
+    public int departement;
+    public String promotion;
+    public int annee;
 
     //EmptyConstructor
     public Stagiaire() {
@@ -57,6 +57,12 @@ public class Stagiaire {
     }
     public void setAnnee(int annee) {
 	this.annee = annee;
+    }
+
+    @Override
+    public String toString() {
+	return "Stagiaire [nom=" + nom + ", prenom=" + prenom + ", departement=" + departement + ", promotion="
+		+ promotion + ", annee=" + annee + "]";
     }
 
 
