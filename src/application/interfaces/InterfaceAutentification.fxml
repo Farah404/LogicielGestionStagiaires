@@ -30,7 +30,7 @@
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Hyperlink layoutX="324.0" layoutY="199.0" text="Je n'ai pas de compte. s'inscrire" />
+            <Hyperlink layoutX="373.0" layoutY="199.0" text="Je n'ai pas de compte" />
          </children>
       </AnchorPane>
    </center>
