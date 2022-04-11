@@ -1,6 +1,6 @@
 package application.models;
 
-public class Stagiaire {
+public class Stagiaire implements Comparable<Stagiaire> {
 
 public static final int TAILLE_NOM = 30;
 public static final int TAILLE_PRENOM = 30;
@@ -75,6 +75,12 @@ public String getAttributLong(String attribut, int TAILLE_ATTRIBUT) {
 public String toString() {
 	return "Stagiaire [nom=" + nom + ", prenom=" + prenom + ", departement=" + departement + ", promotion=" + promotion + ", annee=" + annee
 			+ "]";
+}
+
+@Override
+public int compareTo(Stagiaire o) {
+    // TODO Auto-generated method stub
+    return 0;
 }
 
 }

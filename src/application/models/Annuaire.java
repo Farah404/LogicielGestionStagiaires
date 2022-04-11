@@ -20,7 +20,7 @@ public class Annuaire {
 
 	try {
 
-	    FileReader fr = new FileReader("C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\ISIKA_CDA17_Projet1\\src\\application\\STAGIAIRES.DON");
+	    FileReader fr = new FileReader("C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\STAGIAIRES.DON");
 	    BufferedReader br = new BufferedReader(fr);
 
 	    while(br.ready()) {
@@ -36,7 +36,14 @@ public class Annuaire {
 	    br.close();
 	    fr.close();
 
-	    System.out.println(annuaire);
+//	    System.out.println(annuaire);
+//	    annuaire.supprimerStagiaire("Mehdi");
+//	    System.out.println(annuaire.rechercherNom("Mehdi"));
+//	    System.out.println(annuaire.rechercherPrenom("Pascale"));
+//	    System.out.println(annuaire.rechercherDpt("93"));
+	    System.out.println(annuaire.rechercherPromo("ATOD"));
+//	    System.out.println(annuaire.rechercherAnnee("2008"));
+
 
 	} catch (FileNotFoundException e) {
 	    System.out.println("le chemin n'est pas le bon");
