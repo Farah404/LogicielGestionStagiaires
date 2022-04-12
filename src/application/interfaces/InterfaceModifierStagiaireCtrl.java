@@ -1,4 +1,4 @@
-package application.controllers;
+package application.interfaces;
 
 public class InterfaceModifierStagiaireCtrl {
 

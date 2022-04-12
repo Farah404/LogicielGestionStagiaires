@@ -1,4 +1,4 @@
-module ISIKA_CDA17_Projet1 {
+module LogicielGestionStagiaires {
     requires javafx.base;
 	requires javafx.controls;
 	requires javafx.graphics;
