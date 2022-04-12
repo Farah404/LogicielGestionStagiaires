@@ -1,10 +1,12 @@
 package application.models;
 
+
+
 public class NoeudArbreBinaire {
     // Attributs
-    private Stagiaire stagiaire; // clé
-    private NoeudArbreBinaire filsGauche;
-    private NoeudArbreBinaire filsDroit;
+    Stagiaire stagiaire; // clé
+    NoeudArbreBinaire filsGauche;
+    NoeudArbreBinaire filsDroit;
 
     // Constructeurs
     public NoeudArbreBinaire(Stagiaire stagiaire) {
@@ -57,6 +59,8 @@ public class NoeudArbreBinaire {
 	    }
 	}
     }
+    
+
 
     // Méthode recherche par nom
     public String rechercherNom(String NomRechercher) {
@@ -164,10 +168,10 @@ public class NoeudArbreBinaire {
     }
 
     // attribu
-    private NoeudArbreBinaire racine = null;
+    private static NoeudArbreBinaire racine = null;
 
     // Getters & Setters
-    public NoeudArbreBinaire getRacine() {
+    public static NoeudArbreBinaire getRacine() {
 	return racine;
     }
 
@@ -242,5 +246,6 @@ public class NoeudArbreBinaire {
 	}
 	return resultat;
     }
+
 
 }

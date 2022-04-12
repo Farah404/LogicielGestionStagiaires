@@ -49,11 +49,11 @@
          <children>
             <TableView layoutX="23.0" layoutY="6.0" prefHeight="391.0" prefWidth="510.0">
               <columns>
-                <TableColumn prefWidth="107.0" text="Nom" />
-                <TableColumn prefWidth="88.0" text="Prénom" />
-                  <TableColumn prefWidth="96.0" text="Département" />
-                  <TableColumn prefWidth="76.0" text="Promotion" />
-                  <TableColumn prefWidth="153.0" text="Année d'entrée" />
+                <TableColumn prefWidth="100.0" text="Nom" />
+                <TableColumn prefWidth="95.0" text="Prénom" />
+                  <TableColumn prefWidth="110.0" text="Département" />
+                  <TableColumn prefWidth="94.0" text="Promotion" />
+                  <TableColumn prefWidth="121.0" text="Année d'entrée" />
               </columns>
             </TableView>
             <Button layoutX="550.0" layoutY="280.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Ajouter un stagiaire" />

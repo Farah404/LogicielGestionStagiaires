@@ -1,5 +1,8 @@
 package application.models;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class Stagiaire implements Comparable<Stagiaire> {
 
 public static final int TAILLE_NOM = 30;
@@ -82,5 +85,6 @@ public int compareTo(Stagiaire o) {
     // TODO Auto-generated method stub
     return 0;
 }
+
 
 }
