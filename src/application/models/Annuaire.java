@@ -38,10 +38,10 @@ public class Annuaire {
 
 //	    System.out.println(annuaire);
 //	    annuaire.supprimerStagiaire("Mehdi");
-//	    System.out.println(annuaire.rechercherNom("Mehdi"));
+//	    System.out.println(annuaire.rechercherNom("ZAMOUN"));
 //	    System.out.println(annuaire.rechercherPrenom("Pascale"));
 //	    System.out.println(annuaire.rechercherDpt("93"));
-	    System.out.println(annuaire.rechercherPromo("ATOD"));
+//	    System.out.println(annuaire.rechercherPromo("ATOD"));
 //	    System.out.println(annuaire.rechercherAnnee("2008"));
 
 

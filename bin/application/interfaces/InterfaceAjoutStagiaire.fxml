@@ -12,7 +12,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="75.0" layoutY="40.0" text="Modifier un Stagiaire existant" underline="true" />
+            <Label layoutX="75.0" layoutY="40.0" text="Ajouter un nouveau stagiaire" underline="true" />
             <Label layoutX="30.0" layoutY="80.0" text="Nom" />
             <Label layoutX="30.0" layoutY="120.0" text="Prenom" />
             <Label layoutX="30.0" layoutY="160.0" text="Departement" />
@@ -29,7 +29,7 @@
                </image>
             </ImageView>
             <Button layoutX="113.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Modifier le Stagiaire" />
-            <Button layoutX="113.0" layoutY="302.0" mnemonicParsing="false" prefWidth="150.0" text="Retour" />
+            <Button layoutX="113.0" layoutY="302.0" mnemonicParsing="false" prefWidth="150.0" text="Reinitialiser" />
          </children>
       </AnchorPane>
    </center>

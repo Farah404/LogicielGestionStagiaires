@@ -42,8 +42,7 @@ public class InterfaceAuthentificationCtrl {
 	if (formatteurRadioBtn.isSelected()) {
 	    if (nomUtilisateurTxtField.getText().equals(fmtLogin) && mdpPassField.getText().equals(fmtMdp)) {
 		Stage primaryStage = (Stage) connexionBtn.getScene().getWindow();
-		BorderPane layoutAddProduct = (BorderPane) FXMLLoader
-			.load(getClass().getResource("InterfaceFormatteur.fxml"));
+		BorderPane layoutAddProduct = (BorderPane) FXMLLoader.load(getClass().getResource("InterfaceFormatteur.fxml"));
 		Scene sceneAdd = new Scene(layoutAddProduct, 440, 700);
 		primaryStage.setScene(sceneAdd);
 	    } else {
@@ -57,8 +56,7 @@ public class InterfaceAuthentificationCtrl {
 	} else if (administrateurRadioBtn.isSelected()) {
 	    if (nomUtilisateurTxtField.getText().equals(adLogin) && mdpPassField.getText().equals(adMdp)) {
 		Stage primaryStage = (Stage) connexionBtn.getScene().getWindow();
-		BorderPane layoutAddProduct = (BorderPane) FXMLLoader
-			.load(getClass().getResource("InterfaceAdministrateur.fxml"));
+		BorderPane layoutAddProduct = (BorderPane) FXMLLoader.load(getClass().getResource("InterfaceAdministrateur.fxml"));
 		Scene sceneAdd = new Scene(layoutAddProduct, 440, 700);
 		primaryStage.setScene(sceneAdd);
 	    } else {
@@ -76,5 +74,20 @@ public class InterfaceAuthentificationCtrl {
 	    alert.showAndWait();
 
 	}
+    }
+    
+    @FXML
+    private void mdpOublieButtonAction(ActionEvent e) throws IOException {
+	Stage primaryStage = (Stage) mdpOublieBtn.getScene().getWindow();
+	BorderPane layoutAddProduct = (BorderPane) FXMLLoader.load(getClass().getResource("InterfaceMdpOublie.fxml"));
+	Scene sceneAdd = new Scene(layoutAddProduct, 440, 700);
+	primaryStage.setScene(sceneAdd);
+    }
+    @FXML
+    private void creationCompteButtonAction(ActionEvent e) throws IOException {
+	Stage primaryStage = (Stage) creationCompteBtn.getScene().getWindow();
+	BorderPane layoutAddProduct = (BorderPane) FXMLLoader.load(getClass().getResource("InterfaceCreationCompte.fxml"));
+	Scene sceneAdd = new Scene(layoutAddProduct, 440, 700);
+	primaryStage.setScene(sceneAdd);
     }
 }

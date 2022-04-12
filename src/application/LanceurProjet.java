@@ -1,6 +1,9 @@
 package application;
 	
+import application.models.Stagiaire;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -9,6 +12,8 @@ import javafx.scene.layout.BorderPane;
 
 
 public class LanceurProjet extends Application {
+    public static ObservableList <Stagiaire> listS = FXCollections.observableArrayList();
+    
 	@Override
 	public void start(Stage primaryStage) {
 		try {
