@@ -14,16 +14,16 @@ public class ArbreStagiaire {
     static final int DEPARTEMENT = 3;
     static final int PROMO = 15;
     static final int ANNEE_ENTREE = 4;
-    static final String PATH_FILE_BIN = "src/applications/stagiaires.bin";
-    static final String PATH_FILE_DON = "src/applications//STAGIAIRES.DON";
+    static final String PATH_FILE_BIN = "C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\stagiaires.bin";
+    static final String PATH_FILE_DON = "C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\STAGIAIRES.DON";
     private Noeud racine;
     private static RandomAccessFile raf;
 
     public ArbreStagiaire() {
-	initArbre();
+	creationFichierBinaire();
     }
 
-    //	************************** METHODES GETTERS ET SETTERS ************************** //
+    // METHODES GETTERS ET SETTERS//
 
     public Noeud getRacine() {
 	return racine;
@@ -33,9 +33,9 @@ public class ArbreStagiaire {
 	this.racine = racine;
     }
 
-    // ************************* MANIPULATION FICHIER BINAIRE************************** //
+    //MANIPULATION FICHIER BINAIRE//
 
-    public void initArbre() {
+    public void creationFichierBinaire() {
 	File monFichierBin = new File(PATH_FILE_BIN);
 	File monFichierDon = new File(PATH_FILE_DON);
 	if (monFichierBin.exists()) {
@@ -44,20 +44,21 @@ public class ArbreStagiaire {
 	    } catch (FileNotFoundException e) {
 		e.printStackTrace();
 	    }
-	    initArbreFichierBin();
+	    ArbreFichierBin();
 	} else if (monFichierDon.exists()) {
 	    try {
 		raf = new RandomAccessFile(PATH_FILE_BIN, "rw");
 	    } catch (FileNotFoundException e) {
 		e.printStackTrace();
 	    }
-	    initLectureDon(monFichierDon);
+	    LectureDon(monFichierDon);
 	}
+	
     }
-    //************************** INITIALISATION DE L'ARBRE A PARTIR DU FICHIER BINAIRE************************** //
+    //INITIALISATION DE L'ARBRE A PARTIR DU FICHIER BINAIRE//
 
-    private void initLectureDon(File monFichier) {
-	String nom = "", prenom = "", departement = "", nomPromo = "", anneeEntree = "";
+    private void LectureDon(File monFichier) {
+	String nom = "", prenom = "", departement = "", promotion = "", annee = "";
 	try {
 	    FileReader fr = new FileReader(monFichier);
 	    BufferedReader br = new BufferedReader(fr);
@@ -65,10 +66,10 @@ public class ArbreStagiaire {
 		nom = br.readLine();
 		prenom = br.readLine();
 		departement = br.readLine();
-		nomPromo = br.readLine();
-		anneeEntree = br.readLine();
+		promotion = br.readLine();
+		annee = br.readLine();
 		br.readLine();
-		this.ajouter(new Stagiaire(nom, prenom, departement, nomPromo, anneeEntree));
+		this.ajouter(new Stagiaire(nom, prenom, departement, promotion, annee));
 	    }
 	    br.close();
 	} catch (IOException e) {
@@ -76,24 +77,24 @@ public class ArbreStagiaire {
 	}
     }
 
-    private void initArbreFichierBin() {
+    private void ArbreFichierBin() {
 	this.setRacine(new Noeud(lectureStagiaire(0), 0));
-	this.initArbreFichierBin(racine);
+	this.ArbreFichierBin(racine);
     }
 
-    private Noeud initArbreFichierBin(Noeud courant) {
+    private Noeud ArbreFichierBin(Noeud courant) {
 	if (lectureIndexFilsG(courant.getIndex()) != -1) {
-	    courant.setGauche(this.initArbreFichierBin(new Noeud(
+	    courant.setGauche(this.ArbreFichierBin(new Noeud(
 		    lectureStagiaire(lectureIndexFilsG(courant.getIndex())), lectureIndexFilsG(courant.getIndex()))));
 	}
 	if (lectureIndexFilsD(courant.getIndex()) != -1) {
-	    courant.setDroit(this.initArbreFichierBin(new Noeud(lectureStagiaire(lectureIndexFilsD(courant.getIndex())),
+	    courant.setDroit(this.ArbreFichierBin(new Noeud(lectureStagiaire(lectureIndexFilsD(courant.getIndex())),
 		    lectureIndexFilsD(courant.getIndex()))));
 	}
 	return courant;
     }
 
-    //************************** METHODE LECTURE ET ECRITURE DANS LE FICHIER BINAIRE ************************** //
+    //METHODE LECTURE ET ECRITURE DANS LE FICHIER BINAIRE//
 
     private static Noeud ecritureNoeudFichier(Stagiaire x, int indexPere) {
 	int index = 0;
@@ -227,7 +228,7 @@ public class ArbreStagiaire {
 	}
     }
 
-    //************************** METHODE POUR AJOUTER UN NOEUD************************** //	
+    //METHODE POUR AJOUTER UN NOEUD//	
 
     public void ajouter(Stagiaire x) {
 	if (this.racine == null) {
@@ -249,7 +250,7 @@ public class ArbreStagiaire {
 	return courant;
     }
 
-    //		************************** METHODE POUR SUPPRIMER UN NOEUD ************************** //	
+    //METHODE POUR SUPPRIMER UN NOEUD//	
 
     public void supprimer(Stagiaire x) {
 	Noeud racineAvant = new Noeud(this.racine.getStagiaire(), 0);
@@ -317,7 +318,7 @@ public class ArbreStagiaire {
 	return dernierDescendant(courant.getDroit());
     }
 
-    //		************************** METHODE POUR MODIFIER UN NOEUD ************************** //
+    //METHODE POUR MODIFIER UN NOEUD//
 
     public void modifierNom(Stagiaire stagiaire, String nouveauNom) {
 	Stagiaire ancienStagiaire = stagiaire;
@@ -354,7 +355,6 @@ public class ArbreStagiaire {
 	this.ajouter(nouveauStagiaire);
     }
 
-    //		********************************************************************	
     @Override
     public String toString() {
 	return racine + " ";

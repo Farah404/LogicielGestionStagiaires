@@ -5,8 +5,7 @@ public class LanceurAnnuaire {
     public static void main(String[] args) {
 
     	ArbreStagiaire monArbre = new ArbreStagiaire();
-    	monArbre.initArbre();
+  
     	System.out.println(monArbre);
-    	System.out.println(monArbre.initArbre());
     }
 }
