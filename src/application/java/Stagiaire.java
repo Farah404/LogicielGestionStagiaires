@@ -65,16 +65,7 @@ public void setAnnee(String annee) {
 	this.annee = annee;
 }
 
-private String getAttributLong(String attribut, int TAILLE_ATTRIBUT) {
-	String attributLong = attribut;
-	for(int i = attribut.length(); i < TAILLE_ATTRIBUT; i++) {
-		attributLong += " ";
-	}
-	return attributLong;
-}
-public String getStagiaireLong() {
-	return getAttributLong(nom, TAILLE_NOM) + getAttributLong(prenom, TAILLE_PRENOM) + getAttributLong(departement, TAILLE_DEPARTEMENT) + getAttributLong(promotion, TAILLE_PROMOTION) + annee;
-}
+
 
 @Override
 public String toString() {
@@ -83,9 +74,50 @@ public String toString() {
 }
 
 @Override
-public int compareTo(Stagiaire o) {
-    // TODO Auto-generated method stub
-    return 0;
+public int compareTo(Stagiaire otherStagiaire) {
+	int nb = this.getNom().compareTo(otherStagiaire.getNom());
+	return nb;
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Stagiaire other = (Stagiaire) obj;
+	if (nom == null) {
+		if(other.getNom() != null) {
+			return false;
+		}	
+	}else if (!nom.equals(other.nom)) {
+		return false;
+	}
+	if (prenom == null) {
+		if (other.prenom != null) {
+			return false;
+		}
+	} else if (!prenom.equals(other.prenom)) {
+		return false;
+	}
+	if (departement == null) {
+		if (other.departement != null)
+			return false;
+	} else if (!departement.equals(other.departement))
+		return false;
+	if (promotion == null) {
+		if (other.promotion != null)
+			return false;
+	} else if (!promotion.equals(other.promotion))
+		return false;
+	if (annee == null) {
+		if (other.annee != null)
+			return false;
+	} else if (!annee.equals(other.annee))
+		return false;
+	return true;
 }
 
 
