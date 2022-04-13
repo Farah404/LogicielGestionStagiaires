@@ -1,4 +1,4 @@
-package application.interfaces;
+package application.controllers;
 
 
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.LanceurProjet;
-import application.models.Stagiaire;
+import application.java.Stagiaire;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,16 +1,15 @@
-package application.models;
+package application.java;
 
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Stagiaire implements Comparable<Stagiaire> {
 
-public static final int TAILLE_NOM = 30;
-public static final int TAILLE_PRENOM = 30;
-public static final int TAILLE_DEPARTEMENT = 3;
-public static final int TAILLE_PROMOTION = 20;
-public static final int TAILLE_ANNEE = 4;
-public static final int TAILLE_STAGIAIRE_OCTETS = 2 * TAILLE_NOM + 2 * TAILLE_PRENOM + 2 * TAILLE_DEPARTEMENT + 2 * TAILLE_PROMOTION + 2 * TAILLE_ANNEE;
+	public static final int TAILLE_NOM = 30;
+	public static final int TAILLE_PRENOM = 30;
+	public static final int TAILLE_DEPARTEMENT = 3;
+	public static final int TAILLE_PROMOTION = 30;
+	public static final int TAILLE_ANNEE = 4;
+	public static final int TAILLE_STAGIAIRE = TAILLE_NOM + TAILLE_PRENOM + TAILLE_DEPARTEMENT + TAILLE_PROMOTION + TAILLE_ANNEE;
+	public static final int TAILLE_STAGIAIRE_OCTETS = 2 * TAILLE_STAGIAIRE + 4 * 3;
 
 private String nom;
 private String prenom;
@@ -66,12 +65,15 @@ public void setAnnee(String annee) {
 	this.annee = annee;
 }
 
-public String getAttributLong(String attribut, int TAILLE_ATTRIBUT) {
+private String getAttributLong(String attribut, int TAILLE_ATTRIBUT) {
 	String attributLong = attribut;
 	for(int i = attribut.length(); i < TAILLE_ATTRIBUT; i++) {
 		attributLong += " ";
 	}
 	return attributLong;
+}
+public String getStagiaireLong() {
+	return getAttributLong(nom, TAILLE_NOM) + getAttributLong(prenom, TAILLE_PRENOM) + getAttributLong(departement, TAILLE_DEPARTEMENT) + getAttributLong(promotion, TAILLE_PROMOTION) + annee;
 }
 
 @Override

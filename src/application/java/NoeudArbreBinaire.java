@@ -1,6 +1,6 @@
-package application.models;
+package application.java;
 
-
+import java.util.List;
 
 public class NoeudArbreBinaire {
     // Attributs
@@ -59,113 +59,24 @@ public class NoeudArbreBinaire {
 	    }
 	}
     }
-    
-
 
     // Méthode recherche par nom
-    public String rechercherNom(String NomRechercher) {
-	String resultat = "";
-	if (this.stagiaire.getNom().equals(NomRechercher)) {
-	    resultat = this.stagiaire.toString();
-	} else if (this.stagiaire.getNom().compareTo(NomRechercher) > 0) { // je pars à gauche
-	    if (this.filsGauche == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsGauche.rechercherNom(NomRechercher);
-	    }
-	} else { // je pars à droite
-	    if (this.filsDroit == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsDroit.rechercherNom(NomRechercher);
-	    }
-	}
-	return resultat;
-    }
+    public List<Stagiaire> recherchernomStagiaire(String nomStagiaire, List<Stagiaire> stagiaires) {
 
-    // Méthode recherche par département
-    public String rechercherDpt(String DptRechercher) {
-	String resultat = "";
-	if (this.stagiaire.getDepartement().equals(DptRechercher)) {
-	    resultat = this.stagiaire.toString();
-	} else if (this.stagiaire.getDepartement().compareTo(DptRechercher) > 0) { // je pars à gauche
-	    if (this.filsGauche == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsGauche.rechercherDpt(DptRechercher);
-	    }
-	} else { // je pars à droite
-	    if (this.filsDroit == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsDroit.rechercherDpt(DptRechercher);
-	    }
-	}
-	return resultat;
-    }
+	if (this.filsGauche != null) {
+	    stagiaires = this.filsGauche.recherchernomStagiaire(nomStagiaire, stagiaires);
 
-    // Méthode recherche par prenom
-    public String rechercherPrenom(String PrenomRechercher) {
-	String resultat = "";
-	if (this.stagiaire.getPrenom().equals(PrenomRechercher)) {
-	    resultat = this.stagiaire.toString();
-	} else if (this.stagiaire.getPrenom().compareTo(PrenomRechercher) > 0) { // je pars à gauche
-	    if (this.filsGauche == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsGauche.rechercherPrenom(PrenomRechercher);
-	    }
-	} else { // je pars à droite
-	    if (this.filsDroit == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsDroit.rechercherNom(PrenomRechercher);
-	    }
 	}
-	return resultat;
-    }
-
-    // Méthode recherche par Annee
-    public String rechercherAnnee(String AnneeRechercher) {
-	String resultat = "";
-	if (this.stagiaire.getAnnee().equals(AnneeRechercher)) {
-	    resultat = this.stagiaire.toString();
-	} else if (this.stagiaire.getAnnee().compareTo(AnneeRechercher) > 0) { // je pars à gauche
-	    if (this.filsGauche == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsGauche.rechercherAnnee(AnneeRechercher);
-	    }
-	} else { // je pars à droite
-	    if (this.filsDroit == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsDroit.rechercherAnnee(AnneeRechercher);
-	    }
+	if ((this.stagiaire.getPrenom().equals(nomStagiaire))) {
+	    stagiaires.add(this.getStagiaire());
 	}
-	return resultat;
-    }
-
-    // Méthode recherche par promotion
-    public String rechercherPromo(String PromoRechercher) {
-	String resultat = "";
-	if (this.stagiaire.getPromotion().equals(PromoRechercher)) {
-	    resultat = this.stagiaire.toString();
-	} else if (this.stagiaire.getPromotion().compareTo(PromoRechercher) > 0) { // je pars à gauche
-	    if (this.filsGauche == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsGauche.rechercherPromo(PromoRechercher);
-	    }
-	} else { // je pars à droite
-	    if (this.filsDroit == null) {
-		return resultat;
-	    } else {
-		resultat = this.filsDroit.rechercherPromo(PromoRechercher);
-	    }
+	if (this.filsDroit != null) { // je pars à droite
+	    stagiaires = this.filsDroit.recherchernomStagiaire(nomStagiaire, stagiaires);
 	}
-	return resultat;
+	return stagiaires;
     }
+    
+ 
 
     // attribu
     private static NoeudArbreBinaire racine = null;
@@ -246,6 +157,13 @@ public class NoeudArbreBinaire {
 	}
 	return resultat;
     }
+    
+    public int nombreStagiaires(NoeudArbreBinaire noeud) {
+	if (noeud == null)
+		return 0;
+	else
+		return nombreStagiaires(noeud.filsGauche) + 1 + nombreStagiaires(noeud.filsDroit);
+}
 
 
 }

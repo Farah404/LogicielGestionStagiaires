@@ -1,8 +1,8 @@
-package application.interfaces;
+package application.controllers;
 
 import java.io.IOException;
 
-import application.models.Stagiaire;
+import application.java.Stagiaire;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

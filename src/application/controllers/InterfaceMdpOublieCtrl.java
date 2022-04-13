@@ -1,4 +1,4 @@
-package application.interfaces;
+package application.controllers;
 
 public class InterfaceMdpOublieCtrl {
 

@@ -1,6 +1,6 @@
 package application;
 	
-import application.models.Stagiaire;
+import application.java.Stagiaire;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +18,7 @@ public class LanceurProjet extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("interfaces/InterfaceAuthentification.fxml"));
-			Scene scene = new Scene(root,600,400);
+			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
 //			scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
