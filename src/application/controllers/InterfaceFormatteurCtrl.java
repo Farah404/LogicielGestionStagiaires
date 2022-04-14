@@ -52,7 +52,7 @@ public class InterfaceFormatteurCtrl implements Initializable {
 	dptS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("dptS"));
 	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promoS"));
 	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("anneeS"));
-	tblS.setItems(LanceurProjet.listS);
+
     }
 
     @FXML

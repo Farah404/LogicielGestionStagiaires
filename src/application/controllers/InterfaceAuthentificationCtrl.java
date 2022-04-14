@@ -25,8 +25,8 @@ import javafx.stage.Stage;
 
 public class InterfaceAuthentificationCtrl {
 
-    private static final String INTERFACE_ADMINISTRATEUR = "/interfaces/InterfaceAdministrateur.fxml";
-    private static final String INTERFACE_FORMATTEUR = "/interfaces/InterfaceFormatteur.fxml";
+    private static final String INTERFACE_ADMINISTRATEUR = "interfaces/InterfaceAdministrateur.fxml";
+    private static final String INTERFACE_FORMATTEUR = "interfaces/InterfaceFormatteur.fxml";
     private static final String A_PROPOS = "/application.interfaces/InterfacePropos.fxml";
     String adLogin = "admin";
     String adMdp = "1234";
@@ -117,9 +117,9 @@ public void setStage(Stage primaryStage) {
     private void AllerVersPropos() throws IOException {
 	InterfaceAuthentificationCtrl controleur = new InterfaceAuthentificationCtrl();
 	propos.getScene().getWindow();
-	FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(A_PROPOS));
+	FXMLLoader loader = new FXMLLoader(getClass().getResource(A_PROPOS));
 	loader.setController(controleur);
-	Pane rootPane = loader.load();
+	Pane rootPane = (Pane) loader.load();
 	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
 	Stage proposStage = new Stage();
 	proposStage.setTitle("A Propos");

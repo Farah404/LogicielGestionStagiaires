@@ -1,4 +1,4 @@
-package application.controllers;
+package application.interfaces;
 
 import java.awt.Desktop;
 import java.io.IOException;

@@ -8,4 +8,5 @@ module LogicielGestionStagiaires {
     opens application to javafx.base, javafx.controls, javafx.graphics, javafx.fxml;
     opens application.controllers to javafx.base, javafx.controls, javafx.graphics, javafx.fxml;
     opens application.interfaces to javafx.base, javafx.controls, javafx.graphics, javafx.fxml;
+    opens application.java to javafx.base, javafx.controls, javafx.graphics, javafx.fxml;
 }
