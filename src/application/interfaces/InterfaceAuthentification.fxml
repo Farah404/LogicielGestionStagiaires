@@ -20,7 +20,7 @@
             <Label layoutX="80.0" layoutY="160.0" text="Mot de passe" />
             <TextField fx:id="nomUtilisateurTxtField" layoutX="252.0" layoutY="116.0" prefHeight="25.0" prefWidth="243.0" />
             <Label layoutX="258.0" layoutY="14.0" text="Authentification" />
-            <Button fx:id="connexionBtn" layoutX="422.0" layoutY="221.0" mnemonicParsing="false" onAction="#connexionButtonAction" text="Connexion" />
+            <Button fx:id="connexionBtn" layoutX="420.0" layoutY="220.0" mnemonicParsing="false" onAction="#connexionButtonAction" text="Connexion" />
             <RadioButton fx:id="formatteurRadioBtn" layoutX="261.0" layoutY="80.0" mnemonicParsing="false" text="Formateur">
                <toggleGroup>
                   <ToggleGroup fx:id="fa" />
@@ -34,7 +34,8 @@
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="quitterBtn" layoutX="422.0" layoutY="256.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="72.0" text="Quitter" />
+            <Button fx:id="propos" layoutX="420.0" layoutY="250.0" mnemonicParsing="false" onAction="#AllerVersPropos" prefWidth="72.0" text="A Propos" />
+            <Button fx:id="quitterBtn" layoutX="420.0" layoutY="280.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="72.0" text="Quitter" />
          </children>
       </AnchorPane>
    </center>

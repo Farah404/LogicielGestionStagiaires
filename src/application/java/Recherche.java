@@ -10,13 +10,8 @@ public class Recherche {
 	private static String attributeType01;
 	private static String attributeType02;
 
-//******************* Création de la liste complète des stagiaire  *******************
-	
-	/**
-	 * Méthode de création de la liste complète des stagiaires présent dans l'arbre
-	 * @param ArbreStagiaire : arbre
-	 * @return List<Stagiaire> : listInfixe
-	 */
+//CREATION DE LA LISTE DES STAGIAIRE//
+
 	public static List<Stagiaire> parcoursStagiaire(ArbreStagiaire arbre){
 		Noeud racine = arbre.getRacine();
 		List<Stagiaire> listStagiaire = new ArrayList<Stagiaire>();
@@ -33,13 +28,8 @@ public class Recherche {
 		return listInfixe;
 	}
 	
-//******************* Métthode pour le choix du type de recherhche  *******************
-	
-	/**
-	 * 
-	 * @param attributeType
-	 * @return
-	 */
+//METHODE POUR CHOISIR LE TYPE DE RECHERCHE SOUHAITE//
+
 	private static int keyValue(String attributeType) {
 		
 		if(attributeType.equalsIgnoreCase("nom")) {
@@ -59,13 +49,7 @@ public class Recherche {
 		}
 	}
 
-//	************************ Méthodes de recherche par département  ************************
-	
-	/**
-	 * 
-	 * @param cle
-	 * @return List<Stagiaire> : listRechDep
-	 */
+//METHODE DE RECHERCHE PAR DEPARTEMENT//
 	public static List<Stagiaire> chercherDepartement(String cle, ArbreStagiaire arbre) {
 		List<Stagiaire> listRechDep = new ArrayList<>();
 		return chercherDepartement(cle, arbre.getRacine(),listRechDep);
@@ -90,14 +74,7 @@ public class Recherche {
 		chercherDepartement(cle, r.getDroit(), listResult);
 		return listResult;
 	}
-//************************ Méthodes de recherche par nom ************************
-	
-	/**
-	 * 
-	 * @param cle
-	 * @param arbre
-	 * @return
-	 */
+//MERHODE DE RECHERCHE PAR NOM//
 	public static List<Stagiaire> chercherNom(String cle, ArbreStagiaire arbre) {
 		List<Stagiaire> listRechNom = new ArrayList<>();
 		return chercherNom(cle, arbre.getRacine(), listRechNom);
@@ -123,13 +100,7 @@ public class Recherche {
 		chercherNom(cle, r.getDroit(), listResult);
 		return listResult;
 	}
-//************************ Méthodes de recherche par année d'entrée ************************
-	/**
-	 * 
-	 * @param cle
-	 * @param arbre
-	 * @return
-	 */
+//METHODE DE RECHERCHE PAR ANNEE//
 	public static List<Stagiaire> chercherAnneeEntree(String cle, ArbreStagiaire arbre) {
 		List<Stagiaire> listRechAnnee = new ArrayList<>();
 		return chercherAnneeEntree(cle, arbre.getRacine(), listRechAnnee);
@@ -155,14 +126,7 @@ public class Recherche {
 		chercherAnneeEntree(cle, r.getDroit(), listResult);
 		return listResult;
 	}
-//************************ Méthodes de recherche par promotion spécifique  ************************
-	
-	/**
-	 * 
-	 * @param cle
-	 * @param arbre
-	 * @return
-	 */
+//METHODE DE RECHERCHE PAR PROMOTION SPECIFIQUE//
 	public static List<Stagiaire> chercherPromotion(String cle, ArbreStagiaire arbre) {
 		List<Stagiaire> listRechPromo = new ArrayList<>();
 		return chercherPromotion(cle, arbre.getRacine(), listRechPromo);
@@ -188,14 +152,7 @@ public class Recherche {
 		return listResult;
 	}
 	
-//************************ Méthodes de recherche par promotion générale ************************
-	
-	/**
-	 * 
-	 * @param cle
-	 * @param arbre
-	 * @return
-	 */
+//METHODE DE RECHERCHE PAR PROMOTION GENERALE//
 	public static List<Stagiaire> chercherPromotionFull(String cle, ArbreStagiaire arbre) {
 		List<Stagiaire> listRechPromo = new ArrayList<>();
 		return chercherPromotionFull(cle, arbre.getRacine(), listRechPromo);
@@ -220,15 +177,7 @@ public class Recherche {
 		chercherPromotionFull(cle, r.getDroit(), listResult);
 		return listResult;
 	}
-//************************ Méthodes de recherche parmot clé ************************
-	
-	/**
-	 * 
-	 * @param cle
-	 * @param type
-	 * @param arbre
-	 * @return
-	 */
+//METHODE DE RECHERCHE PAR MOT CLE//
 	public static List<Stagiaire> chercherCle(String cle, String type, ArbreStagiaire arbre) {
 		attributeType01 = type;
 		int key = keyValue(attributeType01);
@@ -265,17 +214,7 @@ public class Recherche {
 		return listResult;
 	}
 	
-//************************ Méthodes de recherche avec multicritère (2 mots clé)  ************************
-	
-	/**
-	 * 
-	 * @param cle1
-	 * @param type1
-	 * @param cle2
-	 * @param type2
-	 * @param arbre
-	 * @return
-	 */
+//METHODE DE RECHERCHE MULTICRITERE DEUX MOT CLE//
 	public static List<Stagiaire> chercherMultiCle(String cle1, String type1, String cle2, String type2, 
 			ArbreStagiaire arbre) { 
 		attributeType01 = type1;
@@ -434,7 +373,7 @@ public class Recherche {
 		return courant;	
 	}
 
-	//************************ Méthode de création des sets ************************
+//CREATION DES SETS//
 	
 	public static Set<String> getListePromo(ArbreStagiaire monArbre) {
 		List<Stagiaire> stagiaires = parcoursStagiaire(monArbre);

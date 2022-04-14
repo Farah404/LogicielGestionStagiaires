@@ -20,14 +20,14 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class InterfaceAuthentificationCtrl {
 
-    private static final String INTERFACE_ADMINISTRATEUR = "interfaces/InterfaceAdministrateur.fxml";
-    private static final String INTERFACE_FORMATTEUR = "interfaces/InterfaceFormatteur.fxml";
-    private static final String CREATION_COMPTE = "interfaces.InterfaceCreationCompte.fxml";
-    private static final String MDP_OUBLIE = "interfaces.InterfaceMdpOublie.fxml";
+    private static final String INTERFACE_ADMINISTRATEUR = "/interfaces/InterfaceAdministrateur.fxml";
+    private static final String INTERFACE_FORMATTEUR = "/interfaces/InterfaceFormatteur.fxml";
+    private static final String A_PROPOS = "/application.interfaces/InterfacePropos.fxml";
     String adLogin = "admin";
     String adMdp = "1234";
     String fmtLogin = "formateur";
@@ -53,6 +53,8 @@ public class InterfaceAuthentificationCtrl {
     private ImageView goToIsikaWebsite;
     @FXML
     private ToggleGroup fa;
+    @FXML
+    private Button propos;
 
     // BOUTTON CONNEXION//
     @FXML
@@ -100,28 +102,30 @@ public class InterfaceAuthentificationCtrl {
 	}
     }
 
-    // BOUTTON MOT DE PASSE OUBLIE//
-    @FXML
-    private void mdpOublieButtonAction(ActionEvent e) throws IOException {
-	Stage primaryStage = (Stage) mdpOublieBtn.getScene().getWindow();
-	BorderPane layoutInterfaceMdpOublie = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource(MDP_OUBLIE));
-	Scene sceneAdd = new Scene(layoutInterfaceMdpOublie, 440, 700);
-	primaryStage.setScene(sceneAdd);
-    }
-
-    // BOUTTON CREATION NOUVEL COMPTE//
-    @FXML
-    private void creationCompteButtonAction(ActionEvent e) throws IOException {
-	Stage primaryStage = (Stage) creationCompteBtn.getScene().getWindow();
-	BorderPane layoutCreationCompte = (BorderPane) FXMLLoader.load(getClass().getClassLoader().getResource(CREATION_COMPTE));
-	Scene sceneAdd = new Scene(layoutCreationCompte, 440, 700);
-	primaryStage.setScene(sceneAdd);
-    }
-
     // METHODE POUR FERMER L'APPLICATION//
     @FXML
     public void closeWindow() {
 	Platform.exit();
+    }
+    
+public void setStage(Stage primaryStage) {
+
+	}
+    
+    //METHODE POUR ALLER A LA FENETRE A PROPOS//
+    @FXML
+    private void AllerVersPropos() throws IOException {
+	InterfaceAuthentificationCtrl controleur = new InterfaceAuthentificationCtrl();
+	propos.getScene().getWindow();
+	FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(A_PROPOS));
+	loader.setController(controleur);
+	Pane rootPane = loader.load();
+	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
+	Stage proposStage = new Stage();
+	proposStage.setTitle("A Propos");
+	proposStage.setScene(scene);
+	proposStage.show();
+	controleur.setStage(proposStage);
     }
 
     // METHODE POUR ALLER SUR LE SITE ISIKA//

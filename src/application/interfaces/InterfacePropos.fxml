@@ -22,7 +22,7 @@
             </ImageView>
             <Hyperlink fx:id="goToIsikaWebsite" layoutX="469.0" layoutY="10.0" onAction="#goToIsikaWebsite" text="Aller sur le site ISIKA" />
             <Hyperlink fx:id="goToIsikaYoutube" layoutX="411.0" layoutY="30.0" onAction="#goToIsikaYouTube" text="Aller sur la page YouTube ISIKA" />
-            <Hyperlink fx:id="sendEmailForm" layoutX="496.0" layoutY="50.0" text="Contactez nous" />
+            <Hyperlink fx:id="goToGithub" layoutX="454.0" layoutY="50.0" onAction="#goToGithub" text="Notre projet sur Github" />
             <Hyperlink fx:id="whoDidThis" layoutX="480.0" layoutY="70.0" onAction="#propos" text="Qui a fait ce Projet?" />
          </children>
       </AnchorPane>

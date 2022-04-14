@@ -20,7 +20,7 @@ public class InterfaceProposCtrl {
     private Hyperlink goToIsikaYoutube;
 
     @FXML
-    private Hyperlink sendEmailForm;
+    private Hyperlink goToGithub;
 
     @FXML
     private Hyperlink whoDidThis;
@@ -42,6 +42,13 @@ public class InterfaceProposCtrl {
     public void goToIsikaYouTube() throws IOException, URISyntaxException {
 	Desktop d = Desktop.getDesktop();
 	d.browse(new URI("https://www.youtube.com/channel/UCyZGOAMaVNPITntX2HwbiSw/featured"));
+    }
+    
+    // METHODE POUR ALLER SUR LA PAGE GIT HUB//
+    @FXML
+    public void goToGithub() throws IOException, URISyntaxException {
+	Desktop d = Desktop.getDesktop();
+	d.browse(new URI("https://github.com/Farah404/LogicielGestionStagiaires"));
     }
     
     // METHODE QUI A FAIT CE PROJET//
