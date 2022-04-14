@@ -6,33 +6,36 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" 
-xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceAuthentificationCtrl">
    <center>
       <AnchorPane prefHeight="246.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="80.0" layoutY="120.0" text="Nom d'utilisateur" />
             <Label layoutX="80.0" layoutY="160.0" text="Mot de passe" />
-            <TextField layoutX="252.0" layoutY="116.0" prefHeight="25.0" prefWidth="243.0" />
+            <TextField fx:id="nomUtilisateurTxtField" layoutX="252.0" layoutY="116.0" prefHeight="25.0" prefWidth="243.0" />
             <Label layoutX="258.0" layoutY="14.0" text="Authentification" />
-            <Button layoutX="422.0" layoutY="221.0" mnemonicParsing="false" text="Connexion" />
-            <RadioButton layoutX="261.0" layoutY="80.0" mnemonicParsing="false" text="Formatteur" />
-            <RadioButton layoutX="387.0" layoutY="80.0" mnemonicParsing="false" text="Administrateur" />
+            <Button fx:id="connexionBtn" layoutX="422.0" layoutY="221.0" mnemonicParsing="false" onAction="#connexionButtonAction" text="Connexion" />
+            <RadioButton fx:id="formatteurRadioBtn" layoutX="261.0" layoutY="80.0" mnemonicParsing="false" text="Formateur">
+               <toggleGroup>
+                  <ToggleGroup fx:id="fa" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="administrateurRadioBtn" layoutX="387.0" layoutY="80.0" mnemonicParsing="false" text="Administrateur" toggleGroup="$fa" />
             <Label layoutX="80.0" layoutY="80.0" text="Je suis" />
-            <PasswordField layoutX="253.0" layoutY="156.0" prefHeight="25.0" prefWidth="242.0" />
-            <Hyperlink layoutX="333.0" layoutY="183.0" text="J'ai oublié mon mot de passe" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="201.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+            <PasswordField fx:id="mdpPassField" layoutX="253.0" layoutY="156.0" onAction="#connexionButtonAction" prefHeight="25.0" prefWidth="242.0" />
+            <Hyperlink fx:id="mdpOublieBtn" layoutX="333.0" layoutY="183.0" text="J'ai oublié mon mot de passe" />
+            <ImageView fx:id="goToIsikaWebsite" fitHeight="150.0" fitWidth="200.0" layoutX="201.0" layoutY="217.0" onMouseClicked="#goToIsikaWebsite" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Hyperlink layoutX="373.0" layoutY="199.0" text="Je n'ai pas de compte" />
-            <Button layoutX="422.0" layoutY="256.0" mnemonicParsing="false" prefWidth="72.0" text="Quitter" />
+            <Hyperlink fx:id="creationCompteBtn" layoutX="373.0" layoutY="199.0" text="Je n'ai pas de compte" />
+            <Button fx:id="quitterBtn" layoutX="422.0" layoutY="256.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="72.0" text="Quitter" />
          </children>
       </AnchorPane>
    </center>

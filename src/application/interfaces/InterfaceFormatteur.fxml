@@ -16,22 +16,22 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceFormatteurCtrl">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
               <MenuItem mnemonicParsing="false" text="Imprimer la liste des Stagiaires" />
-                  <MenuItem mnemonicParsing="false" text="Déconexion" />
-                  <MenuItem mnemonicParsing="false" text="Fermer l'application" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeWindow" text="Déconexion" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeWindow" text="Fermer l'application" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edition">
             <items>
               <MenuItem mnemonicParsing="false" text="Ajouter un stagiaire" />
-                  <MenuItem mnemonicParsing="false" text="Modifier un stagiaire" />
-                  <MenuItem mnemonicParsing="false" text="Supprimer un stagiaire" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuEditAction" text="Modifier un stagiaire" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuEditAction" text="Supprimer un stagiaire" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Aide">
@@ -47,17 +47,17 @@
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="431.0" prefWidth="911.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="23.0" layoutY="6.0" prefHeight="391.0" prefWidth="510.0">
+            <TableView fx:id="tblS" layoutX="23.0" layoutY="6.0" prefHeight="391.0" prefWidth="510.0">
               <columns>
-                <TableColumn prefWidth="107.0" text="Nom" />
-                <TableColumn prefWidth="88.0" text="Prénom" />
-                  <TableColumn prefWidth="96.0" text="Département" />
-                  <TableColumn prefWidth="76.0" text="Promotion" />
-                  <TableColumn prefWidth="153.0" text="Année d'entrée" />
+                <TableColumn fx:id="nomS" prefWidth="107.0" text="Nom" />
+                <TableColumn fx:id="prenomS" prefWidth="88.0" text="Prénom" />
+                  <TableColumn fx:id="dptS" prefWidth="96.0" text="Département" />
+                  <TableColumn fx:id="promoS" prefWidth="76.0" text="Promotion" />
+                  <TableColumn fx:id="anneeS" prefWidth="153.0" text="Année d'entrée" />
               </columns>
             </TableView>
-            <Button layoutX="550.0" layoutY="280.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Ajouter un stagiaire" />
-            <Button layoutX="550.0" layoutY="310.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Modifier le stagiaire" />
+            <Button layoutX="550.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleMenuAddAction" prefHeight="25.0" prefWidth="135.0" text="Ajouter un stagiaire" />
+            <Button layoutX="550.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="135.0" text="Modifier le stagiaire" />
             <Pane layoutX="547.0" layoutY="16.0" prefHeight="229.0" prefWidth="378.0">
                <children>
                   <Label layoutX="25.0" layoutY="35.0" text="Nom" />
@@ -66,10 +66,10 @@
                   <Label layoutX="25.0" layoutY="140.0" text="Année" />
                   <Button layoutX="229.0" layoutY="186.0" mnemonicParsing="false" text="Rechercher" />
                   <Label layoutX="24.0" layoutY="6.0" text="Recherche Avancée" underline="true" />
-                  <TextField layoutX="155.0" layoutY="31.0" />
-                  <TextField layoutX="155.0" layoutY="66.0" />
-                  <TextField layoutX="155.0" layoutY="101.0" />
-                  <TextField layoutX="155.0" layoutY="136.0" />
+                  <TextField fx:id="nomCherhcer" layoutX="155.0" layoutY="31.0" />
+                  <TextField fx:id="dptCherhcer" layoutX="155.0" layoutY="66.0" />
+                  <TextField fx:id="promoCherhcer" layoutX="155.0" layoutY="101.0" />
+                  <TextField fx:id="anneeCherhcer" layoutX="155.0" layoutY="136.0" />
                   <Hyperlink layoutX="235.0" layoutY="164.0" text="Reinitialiser" />
                </children>
             </Pane>

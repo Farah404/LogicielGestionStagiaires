@@ -17,7 +17,7 @@ public class LanceurProjet extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("interfaces/InterfaceAuthentification.fxml"));
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("interfaces/InterfaceModifierStagiaire.fxml"));
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
 //			scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 			primaryStage.setScene(scene);
