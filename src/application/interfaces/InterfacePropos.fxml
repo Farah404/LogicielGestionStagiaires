@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceProposCtrl">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Background.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="goToIsikaWebsiteImg" fitHeight="100.0" fitWidth="208.0" layoutX="14.0" layoutY="14.0" onDragDetected="#goToIsikaWebsite" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Isika-logo.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="goToIsikaWebsite" layoutX="469.0" layoutY="10.0" onAction="#goToIsikaWebsite" text="Aller sur le site ISIKA" />
+            <Hyperlink fx:id="goToIsikaYoutube" layoutX="411.0" layoutY="30.0" onAction="#goToIsikaYouTube" text="Aller sur la page YouTube ISIKA" />
+            <Hyperlink fx:id="sendEmailForm" layoutX="496.0" layoutY="50.0" text="Contactez nous" />
+            <Hyperlink fx:id="whoDidThis" layoutX="480.0" layoutY="70.0" onAction="#propos" text="Qui a fait ce Projet?" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -34,7 +34,6 @@
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Hyperlink fx:id="creationCompteBtn" layoutX="373.0" layoutY="199.0" text="Je n'ai pas de compte" />
             <Button fx:id="quitterBtn" layoutX="422.0" layoutY="256.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="72.0" text="Quitter" />
          </children>
       </AnchorPane>
