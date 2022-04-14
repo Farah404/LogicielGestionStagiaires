@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.LanceurProjet;
 import application.java.ArbreStagiaire;
 import application.java.Recherche;
 import application.java.Stagiaire;
@@ -17,16 +16,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class InterfaceFormatteurCtrl implements Initializable {
 
+    
     @FXML
     private TableColumn<Stagiaire, String> nomS;
     @FXML
@@ -39,7 +41,9 @@ public class InterfaceFormatteurCtrl implements Initializable {
     private TableColumn<Stagiaire, String> anneeS;
     @FXML
     private TableView<Stagiaire> tblS;
-    
+    @FXML
+    private Button ajoutBtn;
+
     @FXML
     private TextField nomCherhcer;
     @FXML
@@ -60,15 +64,7 @@ public class InterfaceFormatteurCtrl implements Initializable {
 	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("annee"));
 	tblS.setItems(observableArrayList);
     }
-    @FXML
-    private void handleMenuAddAction(ActionEvent e) throws IOException {
-	Stage primaryStage = (Stage) tblS.getScene().getWindow();
-	BorderPane layoutAjoutStagiaire = (BorderPane) FXMLLoader
-		.load(getClass().getResource("InterfaceAjoutStagiaire.fxml"));
-	Scene sceneList = new Scene(layoutAjoutStagiaire, 500, 700);
-	primaryStage.setScene(sceneList);
 
-    }
 
     @FXML
     private void handleMenuEditAction(ActionEvent e) throws IOException {

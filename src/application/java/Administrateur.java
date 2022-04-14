@@ -1,11 +1,9 @@
 package application.java;
 
-import javafx.collections.ObservableList;
-
 public class Administrateur extends Personnel{
-    
+
 	public Administrateur(String nom, String prenom, String mdp) {
-		
+
 	}
 
 //	public void ajouterStagiaire(Stagiaire trainee, ArbreBinaire arbreSt, ObservableList<Stagiaire> liste) {

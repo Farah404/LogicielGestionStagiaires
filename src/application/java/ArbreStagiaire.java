@@ -53,7 +53,7 @@ public class ArbreStagiaire {
 	    }
 	    LectureDon(monFichierDon);
 	}
-	
+
     }
     //INITIALISATION DE L'ARBRE A PARTIR DU FICHIER BINAIRE//
 
@@ -228,7 +228,7 @@ public class ArbreStagiaire {
 	}
     }
 
-    //METHODE POUR AJOUTER UN NOEUD//	
+    //METHODE POUR AJOUTER UN NOEUD//
 
     public void ajouter(Stagiaire x) {
 	if (this.racine == null) {
@@ -250,7 +250,7 @@ public class ArbreStagiaire {
 	return courant;
     }
 
-    //METHODE POUR SUPPRIMER UN NOEUD//	
+    //METHODE POUR SUPPRIMER UN NOEUD//
 
     public void supprimer(Stagiaire x) {
 	Noeud racineAvant = new Noeud(this.racine.getStagiaire(), 0);

@@ -83,15 +83,13 @@ public int compareTo(Stagiaire otherStagiaire) {
 public boolean equals(Object obj) {
 	if (this == obj)
 		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
+	if ((obj == null) || (getClass() != obj.getClass()))
 		return false;
 	Stagiaire other = (Stagiaire) obj;
 	if (nom == null) {
 		if(other.getNom() != null) {
 			return false;
-		}	
+		}
 	}else if (!nom.equals(other.nom)) {
 		return false;
 	}

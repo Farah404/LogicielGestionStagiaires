@@ -1,10 +1,10 @@
 package application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 
@@ -12,7 +12,7 @@ public class LanceurProjet extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("interfaces/InterfaceFormatteur.fxml"));
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("interfaces/InterfaceAdministrateur.fxml"));
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
 //			scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 			primaryStage.setScene(scene);
@@ -23,7 +23,7 @@ public class LanceurProjet extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

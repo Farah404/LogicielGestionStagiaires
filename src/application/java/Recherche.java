@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Recherche {
-	
+
 	private static String attributeType01;
 	private static String attributeType02;
 
@@ -14,24 +14,24 @@ public class Recherche {
 
 	public static List<Stagiaire> parcoursStagiaire(ArbreStagiaire arbre){
 		Noeud racine = arbre.getRacine();
-		List<Stagiaire> listStagiaire = new ArrayList<Stagiaire>();
+		List<Stagiaire> listStagiaire = new ArrayList<>();
 		return parcoursStagiaire(racine, listStagiaire);
 	}
-	
+
 	private static List<Stagiaire> parcoursStagiaire(Noeud r, List<Stagiaire> listInfixe){
 		if(r == null) return listInfixe;
-		
+
 		parcoursStagiaire(r.getGauche(), listInfixe);
 		listInfixe.add(r.getStagiaire());
 		parcoursStagiaire(r.getDroit(), listInfixe);
-		
+
 		return listInfixe;
 	}
-	
+
 //METHODE POUR CHOISIR LE TYPE DE RECHERCHE SOUHAITE//
 
 	private static int keyValue(String attributeType) {
-		
+
 		if(attributeType.equalsIgnoreCase("nom")) {
 			return 1;
 		}
@@ -54,9 +54,9 @@ public class Recherche {
 		List<Stagiaire> listRechDep = new ArrayList<>();
 		return chercherDepartement(cle, arbre.getRacine(),listRechDep);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param cle
 	 * @param r
 	 * @param listResult
@@ -79,9 +79,9 @@ public class Recherche {
 		List<Stagiaire> listRechNom = new ArrayList<>();
 		return chercherNom(cle, arbre.getRacine(), listRechNom);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param cle
 	 * @param r
 	 * @param listResult
@@ -105,9 +105,9 @@ public class Recherche {
 		List<Stagiaire> listRechAnnee = new ArrayList<>();
 		return chercherAnneeEntree(cle, arbre.getRacine(), listRechAnnee);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param cle
 	 * @param r
 	 * @param listResult
@@ -131,9 +131,9 @@ public class Recherche {
 		List<Stagiaire> listRechPromo = new ArrayList<>();
 		return chercherPromotion(cle, arbre.getRacine(), listRechPromo);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param cle
 	 * @param r
 	 * @param listResult
@@ -151,15 +151,15 @@ public class Recherche {
 		chercherPromotion(cle, r.getDroit(), listResult);
 		return listResult;
 	}
-	
+
 //METHODE DE RECHERCHE PAR PROMOTION GENERALE//
 	public static List<Stagiaire> chercherPromotionFull(String cle, ArbreStagiaire arbre) {
 		List<Stagiaire> listRechPromo = new ArrayList<>();
 		return chercherPromotionFull(cle, arbre.getRacine(), listRechPromo);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param cle
 	 * @param r
 	 * @param listResult
@@ -170,7 +170,7 @@ public class Recherche {
 			return listResult;
 		}
 		chercherPromotionFull(cle, r.getGauche(), listResult);
-		if (cle.compareTo(r.getStagiaire().getPromotion()) == -3 ){ 
+		if (cle.compareTo(r.getStagiaire().getPromotion()) == -3 ){
 			listResult.add(r.getStagiaire());
 //			System.out.println(r.getStagiaire() + " ");
 		}
@@ -184,9 +184,9 @@ public class Recherche {
 		List<Stagiaire> listRech = new ArrayList<>();
 		return chercherCle(cle, key, arbre, listRech);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param cle
 	 * @param key
 	 * @param arbre
@@ -208,15 +208,15 @@ public class Recherche {
 			listResult = chercherDepartement(cle, arbre);
 			break;
 		default:
-			listResult = new ArrayList<Stagiaire>();
+			listResult = new ArrayList<>();
 			break;
 		}
 		return listResult;
 	}
-	
+
 //METHODE DE RECHERCHE MULTICRITERE DEUX MOT CLE//
-	public static List<Stagiaire> chercherMultiCle(String cle1, String type1, String cle2, String type2, 
-			ArbreStagiaire arbre) { 
+	public static List<Stagiaire> chercherMultiCle(String cle1, String type1, String cle2, String type2,
+			ArbreStagiaire arbre) {
 		attributeType01 = type1;
 		attributeType02 = type2;
 		int key1 = keyValue(attributeType01);
@@ -224,7 +224,7 @@ public class Recherche {
 		List<Stagiaire> listRechMulti = new ArrayList<>();
 		return chercherMultiCle(cle1, key1, cle2, key2, arbre, listRechMulti);
 	}
-	
+
 	/**
 	 * Creer un ficher temporaire ou stocker le miniArbre pour la creation de celui-ci
 	 * @param cle1
@@ -234,11 +234,11 @@ public class Recherche {
 	 * @param arbre
 	 * @param listResult
 	 * @return
-	 * @throws lecture fichier 
+	 * @throws lecture fichier
 	 */
-	private static List<Stagiaire> chercherMultiCle(String cle1, int key1, String cle2, int key2, 
+	private static List<Stagiaire> chercherMultiCle(String cle1, int key1, String cle2, int key2,
 			ArbreStagiaire arbre, List<Stagiaire> listResult) {
-		List<Stagiaire> listInter = new ArrayList<Stagiaire>();
+		List<Stagiaire> listInter = new ArrayList<>();
 		switch (key1) {
 		case 1:
 			listInter = chercherNom(cle1, arbre);
@@ -249,14 +249,14 @@ public class Recherche {
 					listResult = chercherAnneeEntree(cle2, miniArbreNom);
 					break;
 				case 3:
-					listResult = chercherPromotion(cle2, miniArbreNom);			
+					listResult = chercherPromotion(cle2, miniArbreNom);
 					break;
 				case 4:
 					listResult = chercherDepartement(cle2, miniArbreNom);
 					break;
 				default:
 					System.out.println("No Results founded");
-					listResult = new ArrayList<Stagiaire>();
+					listResult = new ArrayList<>();
 					break;
 			}
 			break;
@@ -276,9 +276,9 @@ public class Recherche {
 					break;
 				default:
 					System.out.println("No Results founded");
-					listResult = new ArrayList<Stagiaire>();
+					listResult = new ArrayList<>();
 					break;
-			}	
+			}
 			break;
 		case 3:
 			listInter = chercherPromotion(cle1, arbre);
@@ -291,14 +291,14 @@ public class Recherche {
 					listResult = chercherNom(cle2, miniArbrePromo);
 					break;
 				case 2:
-					listResult = chercherAnneeEntree(cle2, miniArbrePromo);			
+					listResult = chercherAnneeEntree(cle2, miniArbrePromo);
 					break;
 				case 4:
 					listResult = chercherDepartement(cle2, miniArbrePromo);
 					break;
 				default:
 					System.out.println("No Results founded");
-					listResult = new ArrayList<Stagiaire>();
+					listResult = new ArrayList<>();
 					break;
 			}
 			break;
@@ -311,29 +311,29 @@ public class Recherche {
 					listResult = chercherNom(cle2, miniArbreDep);
 					break;
 				case 2:
-					listResult = chercherAnneeEntree(cle2, miniArbreDep);		
+					listResult = chercherAnneeEntree(cle2, miniArbreDep);
 					break;
 				case 3:
 					listResult = chercherPromotion(cle2, miniArbreDep);
 					break;
 				default:
 					System.out.println("No Results founded");
-					listResult = new ArrayList<Stagiaire>();
+					listResult = new ArrayList<>();
 					break;
 			}
 			break;
 		default:
 			System.out.println("No Results founded");
-			listResult = new ArrayList<Stagiaire>();
+			listResult = new ArrayList<>();
 			break;
 		}
 		return listResult;
 	}
 
 	//************************ Méthhode d'ajout pour la création de mini-arbre ************************
-	
+
 	/**
-	 * 
+	 *
 	 * @param listStagiaire
 	 * @param arbre
 	 */
@@ -343,7 +343,7 @@ public class Recherche {
 		}
 	}
 	/**
-	 * 
+	 *
 	 * @param x
 	 * @param arbre
 	 */
@@ -353,9 +353,9 @@ public class Recherche {
 		}
 		ajouterNoeud(x, arbre.getRacine());
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param x
 	 * @param courant
 	 * @return
@@ -368,37 +368,37 @@ public class Recherche {
 			courant.setGauche(ajouterNoeud(x, courant.getGauche()));
 		}
 		if (x.getNom().compareTo(courant.getStagiaire().getNom()) > 0) {
-				courant.setDroit(ajouterNoeud(x, courant.getDroit()));		
-		}	
-		return courant;	
+				courant.setDroit(ajouterNoeud(x, courant.getDroit()));
+		}
+		return courant;
 	}
 
 //CREATION DES SETS//
-	
+
 	public static Set<String> getListePromo(ArbreStagiaire monArbre) {
 		List<Stagiaire> stagiaires = parcoursStagiaire(monArbre);
-		Set<String> listePromo = new HashSet<String>();
+		Set<String> listePromo = new HashSet<>();
 		for(Stagiaire stagiaire : stagiaires){
 			listePromo.add(stagiaire.getPromotion());
-		};
+		}
 		return listePromo;
 	}
-	
+
 	public static Set<String> getListeDepartement(ArbreStagiaire monArbre) {
 		List<Stagiaire> stagiaires = parcoursStagiaire(monArbre);
-		Set<String> listeDepartement = new HashSet<String>();
+		Set<String> listeDepartement = new HashSet<>();
 		for(Stagiaire stagiaire : stagiaires){
 			listeDepartement.add(stagiaire.getDepartement());
-		};
+		}
 		return listeDepartement;
 	}
-	
+
 	public static Set<String> getListeAnneeEntree(ArbreStagiaire monArbre) {
 		List<Stagiaire> stagiaires = parcoursStagiaire(monArbre);
-		Set<String> listeAnneeEntree = new HashSet<String>();
+		Set<String> listeAnneeEntree = new HashSet<>();
 		for(Stagiaire stagiaire : stagiaires){
 			listeAnneeEntree.add(stagiaire.getAnnee());
-		};
+		}
 		return listeAnneeEntree;
 	}
 }

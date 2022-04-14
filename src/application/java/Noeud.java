@@ -1,15 +1,15 @@
 package application.java;
 
 public class Noeud {
-    
+
     private Stagiaire stagiaire;
 	private Noeud gauche;
 	private Noeud droit;
 	private int index;
-	
+
 	public Noeud() {
 	}
-	
+
 	public Noeud(Stagiaire stagiaire) {
 		super();
 		this.stagiaire = stagiaire;
@@ -56,7 +56,7 @@ public class Noeud {
 	}
 
 	/**
-	 * Moodifie le noeud parent stagiaire 
+	 * Moodifie le noeud parent stagiaire
 	 * @param stagiaire
 	 */
 	public void setStagiaire(Stagiaire stagiaire) {
@@ -80,7 +80,7 @@ public class Noeud {
 	}
 
 	/**
-	 * Retourne l'index du noeud 
+	 * Retourne l'index du noeud
 	 * @return the index
 	 */
 	public int getIndex() {
@@ -88,7 +88,7 @@ public class Noeud {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param index
 	 */
 	public void setIndex(int index) {
