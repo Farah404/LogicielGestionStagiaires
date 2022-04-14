@@ -5,8 +5,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.LanceurProjet;
+import application.java.ArbreStagiaire;
+import application.java.Recherche;
 import application.java.Stagiaire;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,16 +49,17 @@ public class InterfaceFormatteurCtrl implements Initializable {
     @FXML
     private TextField anneeCherhcer;
 
+    static ArbreStagiaire monArbre = new ArbreStagiaire();
+    ObservableList<Stagiaire> observableArrayList =  FXCollections.observableArrayList(Recherche.parcoursStagiaire(monArbre));
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-	nomS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("nomS"));
-	prenomS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("prenomS"));
-	dptS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("dptS"));
-	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promoS"));
-	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("anneeS"));
-
+	nomS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("nom"));
+	prenomS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("prenom"));
+	dptS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("departement"));
+	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("promotion"));
+	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("annee"));
+	tblS.setItems(observableArrayList);
     }
-
     @FXML
     private void handleMenuAddAction(ActionEvent e) throws IOException {
 	Stage primaryStage = (Stage) tblS.getScene().getWindow();
