@@ -23,22 +23,14 @@
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
               <MenuItem mnemonicParsing="false" text="Imprimer la liste des Stagiaires" />
-                  <MenuItem mnemonicParsing="false" onAction="#closeWindow" text="Déconexion" />
+                  <MenuItem mnemonicParsing="false" onAction="#deconnexion" text="Déconexion" />
                   <MenuItem mnemonicParsing="false" onAction="#closeWindow" text="Fermer l'application" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edition">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Ajouter un stagiaire" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuEditAction" text="Modifier un stagiaire" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuEditAction" text="Supprimer un stagiaire" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Aide">
             <items>
               <MenuItem mnemonicParsing="false" text="Manual d'utilisation" />
-                  <MenuItem mnemonicParsing="false" text="A propos" />
-                  <MenuItem mnemonicParsing="false" text="Référence" />
+                  <MenuItem mnemonicParsing="false" onAction="#AllerVersPropos" text="A propos" />
             </items>
           </Menu>
         </menus>
@@ -56,7 +48,7 @@
                   <TableColumn fx:id="anneeS" prefWidth="122.0" text="Année d'entrée" />
               </columns>
             </TableView>
-            <Button layoutX="550.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleMenuAddAction" prefHeight="25.0" prefWidth="135.0" text="Ajouter un stagiaire" />
+            <Button fx:id="ajoutBtn" layoutX="550.0" layoutY="280.0" mnemonicParsing="false" onAction="#allerVersInterfaceAjoutStagiaire" prefHeight="25.0" prefWidth="135.0" text="Ajouter un stagiaire" />
             <Button layoutX="550.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="135.0" text="Modifier le stagiaire" />
             <Pane layoutX="547.0" layoutY="16.0" prefHeight="229.0" prefWidth="378.0">
                <children>

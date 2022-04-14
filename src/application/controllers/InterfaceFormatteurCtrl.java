@@ -27,8 +27,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class InterfaceFormatteurCtrl implements Initializable {
+    private static final String AJOUT_STAGIAIRE = "/application/interfaces/InterfaceAjoutStagiaire.fxml";
+    private static final String A_PROPOS = "/application/interfaces/InterfacePropos.fxml";
+    private static final String AUTHENTIFICATION = "/application/interfaces/InterfaceAuthentification.fxml";
 
-    
     @FXML
     private TableColumn<Stagiaire, String> nomS;
     @FXML
@@ -54,18 +56,20 @@ public class InterfaceFormatteurCtrl implements Initializable {
     private TextField anneeCherhcer;
 
     static ArbreStagiaire monArbre = new ArbreStagiaire();
-    ObservableList<Stagiaire> observableArrayList =  FXCollections.observableArrayList(Recherche.parcoursStagiaire(monArbre));
+    ObservableList<Stagiaire> observableArrayList = FXCollections
+	    .observableArrayList(Recherche.parcoursStagiaire(monArbre));
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-	nomS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("nom"));
-	prenomS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("prenom"));
-	dptS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("departement"));
-	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("promotion"));
-	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("annee"));
+	nomS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("nom"));
+	prenomS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("prenom"));
+	dptS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("departement"));
+	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promotion"));
+	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
 	tblS.setItems(observableArrayList);
     }
 
-
+    //METHODE ACCES LIMITE//
     @FXML
     private void handleMenuEditAction(ActionEvent e) throws IOException {
 	Alert alert = new Alert(AlertType.ERROR);
@@ -75,9 +79,51 @@ public class InterfaceFormatteurCtrl implements Initializable {
 	alert.showAndWait();
     }
 
+    // METHODE POUR ALLER VERS INTERFACE AJOUTER STAGIAIRE//
+    public void allerVersInterfaceAjoutStagiaire() throws IOException {
+	ajoutBtn.getScene().getWindow();
+	FXMLLoader loader = new FXMLLoader(getClass().getResource(AJOUT_STAGIAIRE));
+	Pane rootPane = (Pane) loader.load();
+	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
+	Stage proposStage = new Stage();
+	proposStage.setTitle("Ajouter un Stagiaire");
+	proposStage.setScene(scene);
+	proposStage.show();
+    }
+
+
+    // METHODE POUR FERMER L'APPLICATION//
     @FXML
     public void closeWindow() {
 	Platform.exit();
+    }
+
+    // METHODE POUR ALLER A LA FENETRE A PROPOS//
+    @FXML
+    private void AllerVersPropos() throws IOException {
+	Stage proposStage = (Stage) ajoutBtn.getScene().getWindow();
+//	propos.getScene().getWindow();
+	FXMLLoader loader = new FXMLLoader(getClass().getResource(A_PROPOS));
+	Pane rootPane = (Pane) loader.load();
+	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
+//	Stage proposStage = new Stage();
+	proposStage.setTitle("A Propos");
+	proposStage.setScene(scene);
+	proposStage.show();
+    }
+
+    // METHODE POUR ALLER A LA FENETRE A PROPOS//
+    @FXML
+    private void deconnexion() throws IOException {
+	Stage proposStage = (Stage) ajoutBtn.getScene().getWindow();
+//	decoBtn.getScene().getWindow();
+	FXMLLoader loader = new FXMLLoader(getClass().getResource(AUTHENTIFICATION));
+	Pane rootPane = (Pane) loader.load();
+	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
+//	Stage proposStage = new Stage();
+	proposStage.setTitle("Annuaire Informatisé par FHF");
+	proposStage.setScene(scene);
+	proposStage.show();
     }
 
 }
