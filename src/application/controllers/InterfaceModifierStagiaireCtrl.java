@@ -19,73 +19,65 @@ import javafx.scene.control.TextField;
 
 public class InterfaceModifierStagiaireCtrl {
 
-    @FXML
-    private TextField nomS;
 
     @FXML
-    private TextField prenomS;
+    private TextField nomMdf;
 
     @FXML
-    private TextField dptS;
+    private TextField prenomMdf;
 
     @FXML
-    private TextField promoS;
+    private TextField dptMdf;
 
     @FXML
-    private TextField anneeS;
+    private TextField promoMdf;
+
+    @FXML
+    private TextField anneeMdf;
 
     @FXML
     private Button validerBtn;
-   @FXML
+  
+    @FXML
     private Button quitterBtn;
     
     static ArbreStagiaire monArbre = new ArbreStagiaire();
     ObservableList<Stagiaire> observableArrayList = FXCollections.observableArrayList(Recherche.parcoursStagiaire(monArbre));
 
-    public InterfaceAdministrateurCtrl interfaceMdfStgr;
 
-    public InterfaceModifierStagiaireCtrl() {
-    }
-
-    public InterfaceModifierStagiaireCtrl(InterfaceAdministrateurCtrl interfaceMdfStgr) {
-	this.interfaceMdfStgr = interfaceMdfStgr;
-    }
-
-    public InterfaceAdministrateurCtrl getInterfaceMdfStgr() {
-	return interfaceMdfStgr;
-    }
-
-
-    @FXML
-    public void modifierStagaire() throws IOException {
-	//PRE REMPLIR LES CHAMPS DE LA FENETRE MODIFICATION//
-	String nom = getInterfaceMdfStgr().txtFieldModificationNom();
-	String prenom = getInterfaceMdfStgr().txtFieldModificationPrenom();
-	String dpt = getInterfaceMdfStgr().txtFieldModificationDepartement();
-	String promo = getInterfaceMdfStgr().txtFieldModificationPromotion();
-	String annee = getInterfaceMdfStgr().txtFieldModificationAnnee();
-	nomS.setText(nom);
-	prenomS.setText(prenom);
-	dptS.setText(dpt);
-	promoS.setText(promo);
-	anneeS.setText(annee);
-
-	//CREATION DU NOUVEAU STAGIARE//
-	String nomNouveau = nomS.getText();
-	String prenomNouveau = prenomS.getText();
-	String dptNouveau = dptS.getText();
-	String promoNouveau = promoS.getText();
-	String anneeNouveau = anneeS.getText();
+	public void initialize(URL location, ResourceBundle resources) { 
+		//PRE REMPLIR LES CHAMPS DE LA FENETRE MODIFICATION//
+	    nomMdf.setText(InterfaceAdministrateurCtrl.stagiaireMdf.getNom());
+	    prenomMdf.setText(InterfaceAdministrateurCtrl.stagiaireMdf.getPrenom());
+	    dptMdf.setText(InterfaceAdministrateurCtrl.stagiaireMdf.getPromotion());
+	    promoMdf.setText(InterfaceAdministrateurCtrl.stagiaireMdf.getDepartement());
+	    anneeMdf.setText(InterfaceAdministrateurCtrl.stagiaireMdf.getAnnee());
+//		Stagiaire ancienStagiaire = new Stagiaire(nom,prenom,dpt,promo,annee);
 	
-	//DECLARATION DE L'ANCIEN ET DU NOUVEAU STAGIAIRE//
-	Stagiaire ancienStagiaire = new Stagiaire(nom,prenom,dpt,promo,annee);
-	Stagiaire nouveauStagaire = new Stagiaire(nomNouveau,prenomNouveau,dptNouveau,promoNouveau,anneeNouveau);
+	System.out.println(InterfaceAdministrateurCtrl.stagiaireMdf.getAnnee());
+	System.out.println();
+	}
 	
-	//SUPPRESSION DE L'ANCIEN STAGAIRE ET AJOUT DU NOUVEAU//
-	monArbre.modifier(ancienStagiaire,nouveauStagaire);
-
-    }
- 
-
-
+	
+	
+	
+//	private void modifierStagiaire() throws IOException {
+//		String nomNouveau = nomS.getText();
+//		String prenomNouveau = prenomS.getText();
+//		String dptNouveau = dptS.getText();
+//		String promoNouveau = promoS.getText();
+//		String anneeNouveau = anneeS.getText();
+//		Stagiaire nouveauStagaire = new Stagiaire(nomNouveau,prenomNouveau,dptNouveau,promoNouveau,anneeNouveau);
+//		
+//		Alert modifAlerte = new Alert(AlertType.CONFIRMATION);
+//		modifAlerte.setTitle("Modification d'un stagiaire");
+//		modifAlerte.setHeaderText("Voulez-vous valider les modifications ?");
+//		Optional<ButtonType> option = modifAlerte.showAndWait();
+//
+//		if (option.get() == ButtonType.OK) {
+//		    monArbre.modifier(ancienStagiaire,nouveauStagaire);
+//		}else {
+//		    
+//		}
+//	}
 }

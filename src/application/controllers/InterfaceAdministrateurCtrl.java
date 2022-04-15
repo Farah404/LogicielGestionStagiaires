@@ -42,8 +42,7 @@ import javafx.stage.Stage;
 //import com.itextpdf.text.pdf.PdfPTable;
 //import com.itextpdf.text.pdf.PdfWriter;
 
-
-public class InterfaceAdministrateurCtrl implements Initializable{
+public class InterfaceAdministrateurCtrl implements Initializable {
     private static final String AJOUT_STAGIAIRE = "/application/interfaces/InterfaceAjoutStagiaire.fxml";
     private static final String MODIFIER_STAGIAIRE = "/application/interfaces/InterfaceModifierStagiaire.fxml";
     private static final String A_PROPOS = "/application/interfaces/InterfacePropos.fxml";
@@ -76,40 +75,60 @@ public class InterfaceAdministrateurCtrl implements Initializable{
     @FXML
     private Button delBtn;
     
+    @FXML
+    private TextField nomMdf;
+
+    @FXML
+    private TextField prenomMdf;
+
+    @FXML
+    private TextField dptMdf;
+
+    @FXML
+    private TextField promoMdf;
+
+    @FXML
+    private TextField anneeMdf;
+
+    @FXML
+    private Button validerBtn;
+    
+    static Stagiaire stagiaireMdf;
+
+
     static ArbreStagiaire monArbre = new ArbreStagiaire();
-    ObservableList<Stagiaire> observableArrayList =  FXCollections.observableArrayList(Recherche.parcoursStagiaire(monArbre));
+    ObservableList<Stagiaire> observableArrayList = FXCollections
+	    .observableArrayList(Recherche.parcoursStagiaire(monArbre));
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-	nomS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("nom"));
-	prenomS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("prenom"));
-	dptS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("departement"));
-	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("promotion"));
-	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire,String>("annee"));
+	nomS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("nom"));
+	prenomS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("prenom"));
+	dptS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("departement"));
+	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promotion"));
+	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
 	tblS.setItems(observableArrayList);
-	
 
-	
-	delBtn.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() { 
-	    
+	delBtn.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 	    @Override
-			public void handle(ActionEvent event) {
-			supprStagiaire();
-			}
-		});
+	    public void handle(ActionEvent event) {
+		supprStagiaire();
+	    }
+	});
 
-	modifBtn.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {    
+	modifBtn.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 	    @Override
-		public void handle(ActionEvent event) {
+	    public void handle(ActionEvent event) {
 		Stagiaire stgrMdf = tblS.getSelectionModel().getSelectedItem();
-			if (stgrMdf != null) {
+		if (stgrMdf != null) {
 
-				try {
-				    allerVersInterfaceModifierStagiaire(stgrMdf);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+		    try {
+			allerVersInterfaceModifierStagiaire(stgrMdf);
+		    } catch (IOException e) {
+			e.printStackTrace();
+		    }
 		}
+	    }
 	});
     }
 
@@ -127,7 +146,6 @@ public class InterfaceAdministrateurCtrl implements Initializable{
 
     // METHODE POUR ALLER VERS INTERFACE MODIFIER STAGIAIRE//
     public void allerVersInterfaceModifierStagiaire(Stagiaire stagaire) throws IOException {
-	new InterfaceModifierStagiaireCtrl(this);
 	FXMLLoader loader = new FXMLLoader(getClass().getResource(MODIFIER_STAGIAIRE));
 	Pane rootPane = (Pane) loader.load();
 	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
@@ -143,117 +161,116 @@ public class InterfaceAdministrateurCtrl implements Initializable{
 	Platform.exit();
     }
 
-    //METHODE POUR ALLER A LA FENETRE A PROPOS//
+    // METHODE POUR ALLER A LA FENETRE A PROPOS//
     @FXML
     private void AllerVersPropos() throws IOException {
 	Stage proposStage = (Stage) ajoutBtn.getScene().getWindow();
-	//	propos.getScene().getWindow();
+	// propos.getScene().getWindow();
 	FXMLLoader loader = new FXMLLoader(getClass().getResource(A_PROPOS));
 	Pane rootPane = (Pane) loader.load();
 	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
-	//	Stage proposStage = new Stage();
+	// Stage proposStage = new Stage();
 	proposStage.setTitle("A Propos");
 	proposStage.setScene(scene);
 	proposStage.show();
     }
 
-    //METHODE POUR SE DECONNECTER//
+    // METHODE POUR SE DECONNECTER//
     @FXML
     private void deconnexion() throws IOException {
 	Stage proposStage = (Stage) ajoutBtn.getScene().getWindow();
-	//	decoBtn.getScene().getWindow();
+	// decoBtn.getScene().getWindow();
 	FXMLLoader loader = new FXMLLoader(getClass().getResource(AUTHENTIFICATION));
 	Pane rootPane = (Pane) loader.load();
 	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
-	//	Stage proposStage = new Stage();
+	// Stage proposStage = new Stage();
 	proposStage.setTitle("Annuaire Informatisé par FHF");
 	proposStage.setScene(scene);
 	proposStage.show();
     }
 
-    //METHODE POUR PRE REMPLIR LES CHAMPS DANS FENETRE MODIFICATION STAGIAIRE//
+    // METHODE POUR PRE REMPLIR LES CHAMPS DANS FENETRE MODIFICATION STAGIAIRE//
     public String txtFieldModificationNom() {
-	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String nom = stgrMdf.getNom();
+	stagiaireMdf= this.tblS.getSelectionModel().getSelectedItem();
+	String nom = stagiaireMdf.getNom();
 	return nom;
     }
 
     public String txtFieldModificationPrenom() {
-	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String prenom = stgrMdf.getPrenom();
+	stagiaireMdf = this.tblS.getSelectionModel().getSelectedItem();
+	String prenom = stagiaireMdf.getPrenom();
 	return prenom;
     }
 
     public String txtFieldModificationDepartement() {
-	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String departement = stgrMdf.getDepartement();
+	stagiaireMdf = this.tblS.getSelectionModel().getSelectedItem();
+	String departement = stagiaireMdf.getDepartement();
 	return departement;
     }
 
     public String txtFieldModificationPromotion() {
-	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String promotion = stgrMdf.getPromotion();
+	stagiaireMdf = this.tblS.getSelectionModel().getSelectedItem();
+	String promotion = stagiaireMdf.getPromotion();
 	return promotion;
     }
 
     public String txtFieldModificationAnnee() {
-	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String annee = stgrMdf.getAnnee();
+	stagiaireMdf = this.tblS.getSelectionModel().getSelectedItem();
+	String annee = stagiaireMdf.getAnnee();
 	return annee;
     }
-    
-    //METHODE SUPPRIMER STAGIAIRE//
+
+    // METHODE SUPPRIMER STAGIAIRE//
     @FXML
     public void supprStagiaire() {
 	Stagiaire stagiaire = tblS.getSelectionModel().getSelectedItem();
-	if(stagiaire != null) {
+	if (stagiaire != null) {
 	    Alert suppressionAlerte = new Alert(AlertType.CONFIRMATION);
-		suppressionAlerte.setTitle("Suppression d'un stagiaire");
-		suppressionAlerte.setHeaderText("Êtes-vous sûr de vouloir supprimer ce stagiaire ?");
-		Optional<ButtonType> option = suppressionAlerte.showAndWait();
-		if(option.get() == ButtonType.OK) {
-		    monArbre.supprimer(stagiaire);
-			
-	} else {
-	}
+	    suppressionAlerte.setTitle("Suppression d'un stagiaire");
+	    suppressionAlerte.setHeaderText("Êtes-vous sûr de vouloir supprimer ce stagiaire ?");
+	    Optional<ButtonType> option = suppressionAlerte.showAndWait();
+	    if (option.get() == ButtonType.OK) {
+		monArbre.supprimer(stagiaire);
+
+	    } else {
+	    }
 	}
     }
-    
-    //METHODE POUR IMPRIMER LA LISTE SOUS FORMAT PDF//
-//    private void pdf(ObservableList<Stagiaire> stagiaires) throws FileNotFoundException {
-//	FileOutputStream fos = new FileOutputStream(new File(DOCUMENT_PDF));
-//	Document doc = new Document();
-//	PdfWriter.getInstance(doc, fos);
-//	doc.open();
-//	doc.add(new Phrase("Liste des stagiaires\n"));
-//	doc.add(new Phrase("Liste générée le " + LocalDate.now() + "\n"));
-//	doc.add(new Phrase("Nombre de stagiaires : " + Recherche.parcoursStagiaire(monArbre).size() + "\n"));
-//	doc.add(new Phrase("- - - - - - - - - - - - - - - - - - - - - - - -"));
-//	PdfPTable table = new PdfPTable(5);
-//	PdfPCell cell1 = new PdfPCell(new Phrase("NOM"));
-//	PdfPCell cell2 = new PdfPCell(new Phrase("PRENOM"));
-//	PdfPCell cell3 = new PdfPCell(new Phrase("DEPARTEMENT"));
-//	PdfPCell cell4 = new PdfPCell(new Phrase("PROMOTION"));
-//	PdfPCell cell5 = new PdfPCell(new Phrase("ANNEE"));
-//
-//	table.addCell(cell1);
-//	table.addCell(cell2);
-//	table.addCell(cell3);
-//	table.addCell(cell4);
-//	table.addCell(cell5);
-//
-//	table.setWidthPercentage(100);
-//
-//	for (Stagiaire stagiaireTemp : stagiaires) {
-//		table.addCell(new Phrase(stagiaireTemp.getNom()));
-//		table.addCell(new Phrase(stagiaireTemp.getPrenom()));
-//		table.addCell(new Phrase(stagiaireTemp.getDepartement()));
-//		table.addCell(new Phrase(stagiaireTemp.getPromotion()));
-//		table.addCell(new Phrase(stagiaireTemp.getAnnee()));
-//	}
-//	doc.add(table);
-//	doc.close();
-//}
+
+    // METHODE POUR IMPRIMER LA LISTE SOUS FORMAT PDF//
+    //    private void pdf(ObservableList<Stagiaire> stagiaires) throws FileNotFoundException {
+    //	FileOutputStream fos = new FileOutputStream(new File(DOCUMENT_PDF));
+    //	Document doc = new Document();
+    //	PdfWriter.getInstance(doc, fos);
+    //	doc.open();
+    //	doc.add(new Phrase("Liste des stagiaires\n"));
+    //	doc.add(new Phrase("Liste générée le " + LocalDate.now() + "\n"));
+    //	doc.add(new Phrase("Nombre de stagiaires : " + Recherche.parcoursStagiaire(monArbre).size() + "\n"));
+    //	doc.add(new Phrase("- - - - - - - - - - - - - - - - - - - - - - - -"));
+    //	PdfPTable table = new PdfPTable(5);
+    //	PdfPCell cell1 = new PdfPCell(new Phrase("NOM"));
+    //	PdfPCell cell2 = new PdfPCell(new Phrase("PRENOM"));
+    //	PdfPCell cell3 = new PdfPCell(new Phrase("DEPARTEMENT"));
+    //	PdfPCell cell4 = new PdfPCell(new Phrase("PROMOTION"));
+    //	PdfPCell cell5 = new PdfPCell(new Phrase("ANNEE"));
+    //
+    //	table.addCell(cell1);
+    //	table.addCell(cell2);
+    //	table.addCell(cell3);
+    //	table.addCell(cell4);
+    //	table.addCell(cell5);
+    //
+    //	table.setWidthPercentage(100);
+    //
+    //	for (Stagiaire stagiaireTemp : stagiaires) {
+    //		table.addCell(new Phrase(stagiaireTemp.getNom()));
+    //		table.addCell(new Phrase(stagiaireTemp.getPrenom()));
+    //		table.addCell(new Phrase(stagiaireTemp.getDepartement()));
+    //		table.addCell(new Phrase(stagiaireTemp.getPromotion()));
+    //		table.addCell(new Phrase(stagiaireTemp.getAnnee()));
+    //	}
+    //	doc.add(table);
+    //	doc.close();
+    //}
 
 }
-
