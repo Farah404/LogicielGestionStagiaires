@@ -45,6 +45,8 @@ public class InterfaceFormatteurCtrl implements Initializable {
     private TableView<Stagiaire> tblS;
     @FXML
     private Button ajoutBtn;
+    @FXML
+    private TextField stgrTotal;
 
     @FXML
     private TextField nomCherhcer;
@@ -67,6 +69,8 @@ public class InterfaceFormatteurCtrl implements Initializable {
 	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promotion"));
 	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
 	tblS.setItems(observableArrayList);
+	
+	stgrTotal.setText(String.valueOf(Recherche.parcoursStagiaire(monArbre).size()));
     }
 
     //METHODE ACCES LIMITE//

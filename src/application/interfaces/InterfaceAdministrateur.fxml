@@ -39,7 +39,7 @@
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="431.0" prefWidth="911.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tblS" layoutX="23.0" layoutY="6.0" prefHeight="391.0" prefWidth="510.0">
+            <TableView fx:id="tblS" layoutX="23.0" layoutY="6.0" onMouseClicked="#selectionnerTbl" prefHeight="391.0" prefWidth="510.0">
               <columns>
                 <TableColumn fx:id="nomS" prefWidth="92.0" text="Nom" />
                 <TableColumn fx:id="prenomS" prefWidth="88.0" text="Prénom" />

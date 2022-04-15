@@ -100,6 +100,9 @@ public class InterfaceAdministrateurCtrl implements Initializable {
     ObservableList<Stagiaire> observableArrayList = FXCollections
 	    .observableArrayList(Recherche.parcoursStagiaire(monArbre));
 
+    
+ 
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 	nomS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("nom"));
@@ -108,6 +111,11 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	promoS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("promotion"));
 	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
 	tblS.setItems(observableArrayList);
+	
+
+		    
+	stgrTotal.setText(String.valueOf(Recherche.parcoursStagiaire(monArbre).size()));	    
+	
 
 	delBtn.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
 	    @Override
@@ -121,7 +129,6 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	    public void handle(ActionEvent event) {
 		Stagiaire stgrMdf = tblS.getSelectionModel().getSelectedItem();
 		if (stgrMdf != null) {
-
 		    try {
 			allerVersInterfaceModifierStagiaire(stgrMdf);
 		    } catch (IOException e) {
@@ -132,6 +139,9 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	});
     }
 
+    
+
+    
     // METHODE POUR ALLER VERS INTERFACE AJOUTER STAGIAIRE//
     public void allerVersInterfaceAjoutStagiaire() throws IOException {
 	ajoutBtn.getScene().getWindow();
@@ -235,6 +245,20 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	    } else {
 	    }
 	}
+    }
+    
+    static Stagiaire stg;
+    public void selectionnerTbl() {
+	
+	stg = tblS.getSelectionModel().getSelectedItem();
+    	if ( stg != null) {
+    		nomS.setText(stg.getNom());
+    		prenomS.setText(stg.getPrenom());
+    		dptS.setText(stg.getDepartement());
+    		promoS.setText(stg.getPromotion());
+    		anneeS.setText(stg.getAnnee());
+    	}
+
     }
 
     // METHODE POUR IMPRIMER LA LISTE SOUS FORMAT PDF//

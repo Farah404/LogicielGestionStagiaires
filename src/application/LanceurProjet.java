@@ -1,5 +1,10 @@
 package application;
+import application.java.ArbreStagiaire;
+import application.java.Recherche;
+import application.java.Stagiaire;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -9,7 +14,6 @@ import javafx.stage.Stage;
 
 
 public class LanceurProjet extends Application {
-    
     private static final String AJOUT_STAGIAIRE = "/application/interfaces/InterfaceAjoutStagiaire.fxml";
     private static final String MODIFIER_STAGIAIRE = "/application/interfaces/InterfaceModifierStagiaire.fxml";
     private static final String AUTHENTIFICATION = "/application/interfaces/InterfaceAuthentification.fxml";
@@ -34,5 +38,5 @@ public class LanceurProjet extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-	}
+}
 }

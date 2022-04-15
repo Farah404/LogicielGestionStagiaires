@@ -27,10 +27,7 @@ public class InterfaceAjoutStagiaireCtrl {
     private TextField anneeS;
     @FXML
     private Button addBtn;
-    @FXML
-    private Button reinitBtn;
     
-
     static ArbreStagiaire monArbre = new ArbreStagiaire();
     ObservableList<Stagiaire> observableArrayList = FXCollections.observableArrayList(Recherche.parcoursStagiaire(monArbre));
     
