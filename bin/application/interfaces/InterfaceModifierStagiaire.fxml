@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="376.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="376.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceModifierStagiaireCtrl">
    <center>
-      <AnchorPane prefHeight="430.0" prefWidth="430.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="342.0" prefWidth="376.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="63.0" layoutY="28.0" styleClass="styleTitle" text="Stagiaire selectionné" />
             <Label layoutX="50.0" layoutY="100.0" styleClass="labelDetails" text="Nom" />
@@ -21,9 +21,8 @@
             <TextField fx:id="dptS" layoutX="168.0" layoutY="160.0" prefWidth="180.0" />
             <TextField fx:id="promoS" layoutX="168.0" layoutY="190.0" prefWidth="180.0" />
             <TextField fx:id="anneeS" layoutX="168.0" layoutY="220.0" prefWidth="180.0" />
-            <Button fx:id="validerBtn" layoutX="168.0" layoutY="250.0" mnemonicParsing="false" prefWidth="180.0" styleClass="buttonCo" text="Valider les modifications" />
-            <Button fx:id="sprBtn" layoutX="168.0" layoutY="280.0" mnemonicParsing="false" prefWidth="180.0" styleClass="buttonPropos" text="Supprimer le stagiaire" />
-            <Button fx:id="quitterBtn" layoutX="168.0" layoutY="310.0" mnemonicParsing="false" prefWidth="180.0" styleClass="buttonAplus" text="Quitter" />
+            <Button fx:id="validerBtn" layoutX="168.0" layoutY="251.0" mnemonicParsing="false" onAction="#modifierStagaire" prefWidth="180.0" styleClass="buttonCo" text="Valider les modifications" />
+            <Button fx:id="quitterBtn" layoutX="168.0" layoutY="284.0" mnemonicParsing="false" prefWidth="180.0" styleClass="buttonAplus" text="Quitter" />
          </children>
       </AnchorPane>
    </center>

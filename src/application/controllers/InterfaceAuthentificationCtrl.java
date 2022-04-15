@@ -154,6 +154,7 @@ public class InterfaceAuthentificationCtrl {
 	proposStage.setScene(scene);
 	proposStage.show();
     }
+    
     // METHODE ALERTE//
     public void alerteConnexion() throws IOException {
 	Alert alert = new Alert(AlertType.ERROR);

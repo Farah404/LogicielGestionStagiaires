@@ -79,6 +79,7 @@ public class InterfaceFormatteurCtrl implements Initializable {
 	alert.showAndWait();
     }
 
+
     // METHODE POUR ALLER VERS INTERFACE AJOUTER STAGIAIRE//
     public void allerVersInterfaceAjoutStagiaire() throws IOException {
 	ajoutBtn.getScene().getWindow();

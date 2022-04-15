@@ -21,7 +21,7 @@
 				<TextField fx:id="dptS" layoutX="168.0" layoutY="160.0" prefWidth="180.0" />
 				<TextField fx:id="promoS" layoutX="168.0" layoutY="190.0" prefWidth="180.0" />
 				<TextField fx:id="anneeS" layoutX="168.0" layoutY="220.0" prefWidth="180.0" />
-				<Button fx:id="addBtn" layoutX="168.0" layoutY="250.0" mnemonicParsing="false" onAction="#ajouterNewStagiaire" prefWidth="180.0" styleClass="buttonCo" text="Ajouter le stagiaire" />
+				<Button fx:id="addBtn" layoutX="168.0" layoutY="250.0" mnemonicParsing="false" onAction="#ajouterNouveauStagiaire" prefWidth="180.0" styleClass="buttonCo" text="Ajouter le stagiaire" />
 				<Button fx:id="quitterBtn" layoutX="168.0" layoutY="281.0" mnemonicParsing="false" prefWidth="180.0" styleClass="buttonAplus" text="Quitter" />
 			</children>
 		</AnchorPane>

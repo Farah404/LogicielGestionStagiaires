@@ -48,8 +48,8 @@
                   <TableColumn fx:id="anneeS" prefWidth="122.0" text="Année d'entrée" />
               </columns>
             </TableView>
-            <Button fx:id="ajoutBtn" layoutX="550.0" layoutY="280.0" mnemonicParsing="false" onAction="#allerVersInterfaceAjoutStagiaire" prefHeight="25.0" prefWidth="135.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Ajouter un stagiaire" />
-            <Button layoutX="550.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="135.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Modifier le stagiaire" />
+            <Button fx:id="ajoutBtn" layoutX="550.0" layoutY="280.0" mnemonicParsing="false" onAction="#allerVersInterfaceAjoutStagiaire" prefHeight="25.0" prefWidth="145.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Ajouter un stagiaire" />
+            <Button layoutX="550.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="145.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Modifier le stagiaire" />
             <Pane layoutX="547.0" layoutY="16.0" prefHeight="229.0" prefWidth="378.0">
                <children>
                   <Label layoutX="25.0" layoutY="35.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nom" />
@@ -73,6 +73,7 @@
             <Separator layoutX="536.0" layoutY="230.0" prefHeight="5.0" prefWidth="360.0" />
             <Label layoutX="550.0" layoutY="240.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nombre totale de stagiaires" />
             <TextField layoutX="764.0" layoutY="240.0" prefWidth="95.0" />
+            <Button layoutX="550.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="145.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Supprimer le Stagiaire" />
          </children>
       </AnchorPane>
    </center>

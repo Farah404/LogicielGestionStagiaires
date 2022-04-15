@@ -1,9 +1,15 @@
 package application.controllers;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
+import application.java.ArbreStagiaire;
+import application.java.Recherche;
 import application.java.Stagiaire;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -12,7 +18,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class InterfaceModifierStagiaireCtrl {
-
 
     @FXML
     private TextField nomS;
@@ -31,41 +36,56 @@ public class InterfaceModifierStagiaireCtrl {
 
     @FXML
     private Button validerBtn;
-
-    @FXML
-    private Button sprBtn;
-
-    @FXML
+   @FXML
     private Button quitterBtn;
+    
+    static ArbreStagiaire monArbre = new ArbreStagiaire();
+    ObservableList<Stagiaire> observableArrayList = FXCollections.observableArrayList(Recherche.parcoursStagiaire(monArbre));
 
-    private Stagiaire stagiaireSpr;
+    public InterfaceAdministrateurCtrl interfaceMdfStgr;
+
+    public InterfaceModifierStagiaireCtrl() {
+    }
+
+    public InterfaceModifierStagiaireCtrl(InterfaceAdministrateurCtrl interfaceMdfStgr) {
+	this.interfaceMdfStgr = interfaceMdfStgr;
+    }
+
+    public InterfaceAdministrateurCtrl getInterfaceMdfStgr() {
+	return interfaceMdfStgr;
+    }
 
 
     @FXML
-    private void reset() {
-	this.nomS.clear();
-	this.prenomS.clear();
-	this.dptS.clear();
-	this.promoS.clear();
-	this.anneeS.clear();
-	System.out.println("all clear");
+    public void modifierStagaire() throws IOException {
+	//PRE REMPLIR LES CHAMPS DE LA FENETRE MODIFICATION//
+	String nom = getInterfaceMdfStgr().txtFieldModificationNom();
+	String prenom = getInterfaceMdfStgr().txtFieldModificationPrenom();
+	String dpt = getInterfaceMdfStgr().txtFieldModificationDepartement();
+	String promo = getInterfaceMdfStgr().txtFieldModificationPromotion();
+	String annee = getInterfaceMdfStgr().txtFieldModificationAnnee();
+	nomS.setText(nom);
+	prenomS.setText(prenom);
+	dptS.setText(dpt);
+	promoS.setText(promo);
+	anneeS.setText(annee);
+
+	//CREATION DU NOUVEAU STAGIARE//
+	String nomNouveau = nomS.getText();
+	String prenomNouveau = prenomS.getText();
+	String dptNouveau = dptS.getText();
+	String promoNouveau = promoS.getText();
+	String anneeNouveau = anneeS.getText();
+	
+	//DECLARATION DE L'ANCIEN ET DU NOUVEAU STAGIAIRE//
+	Stagiaire ancienStagiaire = new Stagiaire(nom,prenom,dpt,promo,annee);
+	Stagiaire nouveauStagaire = new Stagiaire(nomNouveau,prenomNouveau,dptNouveau,promoNouveau,anneeNouveau);
+	
+	//SUPPRESSION DE L'ANCIEN STAGAIRE ET AJOUT DU NOUVEAU//
+	monArbre.modifier(ancienStagiaire,nouveauStagaire);
+
     }
+ 
 
 
-    private void modifierStagiaire() throws IOException{
-	Alert modifBtn = new Alert(AlertType.CONFIRMATION);
-	modifBtn.setTitle("Modification du stagiaire selectionné");
-	modifBtn.setHeaderText("Voulez-vous valider les modifications ?");
-	Optional<ButtonType> option = modifBtn.showAndWait();
-
-	if (option.get() == ButtonType.OK) {
-	    String nomMdf = nomS.getText();
-	    String prenomMdf = prenomS.getText();
-	    String dptMdf = dptS.getText();
-	    String promoMdf = promoS.getText();
-	    String anneeMdf = anneeS.getText();
-
-	    Stagiaire stModif = new Stagiaire(nomMdf, prenomMdf, dptMdf, promoMdf,anneeMdf);
-	}
-    }
 }
