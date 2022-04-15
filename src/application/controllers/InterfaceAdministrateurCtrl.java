@@ -121,7 +121,7 @@ public class InterfaceAdministrateurCtrl implements Initializable{
     }
 
     //METHODE POUR PRE REMPLIR LES CHAMPS DANS FENETRE MODIFICATION STAGIAIRE//
-    public String ChampsModificationNom() {
+    public String txtFieldModificationNom() {
 	Stagiaire stagiaireModif = this.tblS.getSelectionModel().getSelectedItem();
 	String nom = stagiaireModif.getNom();
 	return nom;

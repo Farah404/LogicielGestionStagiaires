@@ -33,8 +33,8 @@
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="propos" layoutX="230.0" layoutY="263.0" mnemonicParsing="false" onAction="#AllerVersPropos" prefWidth="245.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="A Propos" />
-            <Button fx:id="quitterBtn" layoutX="230.0" layoutY="293.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="245.0" styleClass="buttonAplus" stylesheets="@../style/style.css" text="Quitter" />
+            <Button fx:id="propos" layoutX="230.0" layoutY="263.0" mnemonicParsing="false" onAction="#AllerVersPropos" prefWidth="245.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="A Propos" />
+            <Button fx:id="quitterBtn" layoutX="230.0" layoutY="293.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="245.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Quitter" />
             <ImageView fitHeight="505.0" fitWidth="229.0" layoutX="498.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../vert.jpg" />
