@@ -13,13 +13,14 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
-public class InterfaceModifierStagiaireCtrl {
+public class InterfaceModifierStagiaireCtrl implements Initializable{
 
     @FXML
     private TextField nomMdf;
@@ -50,9 +51,6 @@ public class InterfaceModifierStagiaireCtrl {
 	dptMdf.setText(InterfaceAdministrateurCtrl.stg.getPromotion());
 	promoMdf.setText(InterfaceAdministrateurCtrl.stg.getDepartement());
 	anneeMdf.setText(InterfaceAdministrateurCtrl.stg.getAnnee());
-
-	System.out.println(InterfaceAdministrateurCtrl.stg.getAnnee());
-	System.out.println("++++");
     }
 
 //	private void modifierStagiaire() throws IOException {

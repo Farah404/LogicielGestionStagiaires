@@ -7,10 +7,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javax.swing.text.Document;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import application.java.ArbreStagiaire;
 import application.java.Recherche;
@@ -24,7 +30,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -35,12 +40,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-//import com.itextpdf.text.Document;
-//import com.itextpdf.text.DocumentException;
-//import com.itextpdf.text.Phrase;
-//import com.itextpdf.text.pdf.PdfPTable;
-//import com.itextpdf.text.pdf.PdfWriter;
 
 public class InterfaceAdministrateurCtrl implements Initializable {
     private static final String AJOUT_STAGIAIRE = "/application/interfaces/InterfaceAjoutStagiaire.fxml";
@@ -68,8 +67,7 @@ public class InterfaceAdministrateurCtrl implements Initializable {
     private Button modifBtn;
     @FXML
     private Button propos;
-    @FXML
-    private MenuItem decoBtn;
+    
     @FXML
     private Button refreshBtn;
     @FXML
@@ -198,36 +196,31 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	proposStage.setScene(scene);
 	proposStage.show();
     }
+    
+    //IMPRIMER LA LISTE EN PDF//
+    public void imprimerPdf() throws IOException, DocumentException{
+	pdf(Recherche.parcoursStagiaire(monArbre));
+	    Alert alert = new Alert(AlertType.INFORMATION);
+	    alert.setTitle("Document PDF");
+	    alert.setHeaderText(null);
+	    alert.setContentText("La liste des stagiaire en format PDF est prêt à être imprimée");
+	    alert.showAndWait();
+	
+    }
 
     // METHODE POUR PRE REMPLIR LES CHAMPS DANS FENETRE MODIFICATION STAGIAIRE//
-    public String txtFieldModificationNom() {
-	stagiaireMdf= this.tblS.getSelectionModel().getSelectedItem();
-	String nom = stagiaireMdf.getNom();
-	return nom;
-    }
+    static Stagiaire stg;
+    public void selectionnerTbl() {
+	
+	stg = tblS.getSelectionModel().getSelectedItem();
+    	if ( stg != null) {
+    		nomS.setText(stg.getNom());
+    		prenomS.setText(stg.getPrenom());
+    		dptS.setText(stg.getDepartement());
+    		promoS.setText(stg.getPromotion());
+    		anneeS.setText(stg.getAnnee());
+    	}
 
-    public String txtFieldModificationPrenom() {
-	stagiaireMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String prenom = stagiaireMdf.getPrenom();
-	return prenom;
-    }
-
-    public String txtFieldModificationDepartement() {
-	stagiaireMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String departement = stagiaireMdf.getDepartement();
-	return departement;
-    }
-
-    public String txtFieldModificationPromotion() {
-	stagiaireMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String promotion = stagiaireMdf.getPromotion();
-	return promotion;
-    }
-
-    public String txtFieldModificationAnnee() {
-	stagiaireMdf = this.tblS.getSelectionModel().getSelectedItem();
-	String annee = stagiaireMdf.getAnnee();
-	return annee;
     }
 
     // METHODE SUPPRIMER STAGIAIRE//
@@ -246,55 +239,43 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	    }
 	}
     }
+
+    //METHODE POUR IMPRIMER LA LISTE SOUS FORMAT PDF//
+        private void pdf(List<Stagiaire> list) throws FileNotFoundException, DocumentException {
+    	FileOutputStream fos = new FileOutputStream(new File(DOCUMENT_PDF));
+    	Document doc = new Document();
+    	PdfWriter.getInstance((com.itextpdf.text.Document) doc, fos);
+    	doc.open();
+    	doc.add(new Phrase("Liste des stagiaires\n"));
+    	doc.add(new Phrase("***********************************************************************************"+"\n"));
+    	doc.add(new Phrase("Liste générée le " + LocalDate.now() + "\n"));
+    	doc.add(new Phrase("***********************************************************************************"+"\n"));
+    	doc.add(new Phrase("Nombre de stagiaires : " + Recherche.parcoursStagiaire(monArbre).size() + "\n"));
+    	doc.add(new Phrase("***********************************************************************************"));
+    	PdfPTable table = new PdfPTable(5);
+    	PdfPCell cell1 = new PdfPCell(new Phrase("Nom"));
+    	PdfPCell cell2 = new PdfPCell(new Phrase("Prenom"));
+    	PdfPCell cell3 = new PdfPCell(new Phrase("Departement"));
+    	PdfPCell cell4 = new PdfPCell(new Phrase("Promotion"));
+    	PdfPCell cell5 = new PdfPCell(new Phrase("Année"));
     
-    static Stagiaire stg;
-    public void selectionnerTbl() {
-	
-	stg = tblS.getSelectionModel().getSelectedItem();
-    	if ( stg != null) {
-    		nomS.setText(stg.getNom());
-    		prenomS.setText(stg.getPrenom());
-    		dptS.setText(stg.getDepartement());
-    		promoS.setText(stg.getPromotion());
-    		anneeS.setText(stg.getAnnee());
+    	table.addCell(cell1);
+    	table.addCell(cell2);
+    	table.addCell(cell3);
+    	table.addCell(cell4);
+    	table.addCell(cell5);
+    
+    	table.setWidthPercentage(100);
+    
+    	for (Stagiaire stagiaireTemp : list) {
+    		table.addCell(new Phrase(stagiaireTemp.getNom()));
+    		table.addCell(new Phrase(stagiaireTemp.getPrenom()));
+    		table.addCell(new Phrase(stagiaireTemp.getDepartement()));
+    		table.addCell(new Phrase(stagiaireTemp.getPromotion()));
+    		table.addCell(new Phrase(stagiaireTemp.getAnnee()));
     	}
-
+	doc.add(table);
+	doc.close();
     }
-
-    // METHODE POUR IMPRIMER LA LISTE SOUS FORMAT PDF//
-    //    private void pdf(ObservableList<Stagiaire> stagiaires) throws FileNotFoundException {
-    //	FileOutputStream fos = new FileOutputStream(new File(DOCUMENT_PDF));
-    //	Document doc = new Document();
-    //	PdfWriter.getInstance(doc, fos);
-    //	doc.open();
-    //	doc.add(new Phrase("Liste des stagiaires\n"));
-    //	doc.add(new Phrase("Liste générée le " + LocalDate.now() + "\n"));
-    //	doc.add(new Phrase("Nombre de stagiaires : " + Recherche.parcoursStagiaire(monArbre).size() + "\n"));
-    //	doc.add(new Phrase("- - - - - - - - - - - - - - - - - - - - - - - -"));
-    //	PdfPTable table = new PdfPTable(5);
-    //	PdfPCell cell1 = new PdfPCell(new Phrase("NOM"));
-    //	PdfPCell cell2 = new PdfPCell(new Phrase("PRENOM"));
-    //	PdfPCell cell3 = new PdfPCell(new Phrase("DEPARTEMENT"));
-    //	PdfPCell cell4 = new PdfPCell(new Phrase("PROMOTION"));
-    //	PdfPCell cell5 = new PdfPCell(new Phrase("ANNEE"));
-    //
-    //	table.addCell(cell1);
-    //	table.addCell(cell2);
-    //	table.addCell(cell3);
-    //	table.addCell(cell4);
-    //	table.addCell(cell5);
-    //
-    //	table.setWidthPercentage(100);
-    //
-    //	for (Stagiaire stagiaireTemp : stagiaires) {
-    //		table.addCell(new Phrase(stagiaireTemp.getNom()));
-    //		table.addCell(new Phrase(stagiaireTemp.getPrenom()));
-    //		table.addCell(new Phrase(stagiaireTemp.getDepartement()));
-    //		table.addCell(new Phrase(stagiaireTemp.getPromotion()));
-    //		table.addCell(new Phrase(stagiaireTemp.getAnnee()));
-    //	}
-    //	doc.add(table);
-    //	doc.close();
-    //}
 
 }
