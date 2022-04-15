@@ -1,6 +1,9 @@
 package application.controllers;
 
+import java.beans.EventHandler;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import application.java.ArbreStagiaire;
 import application.java.Recherche;
@@ -39,7 +42,10 @@ public class InterfaceAjoutStagiaireCtrl {
 
     static ArbreStagiaire monArbre = new ArbreStagiaire();
     ObservableList<Stagiaire> observableArrayList =  FXCollections.observableArrayList(Recherche.parcoursStagiaire(monArbre));
-    protected void ajouterNewStagiaire() throws IOException {
+    
+    
+
+    protected void ajouterNewStagiaire(ActionEvent e) throws IOException {
 	String erreurs = validerSaisie();
 	if (erreurs.isEmpty()) {
 	    String nom = nomS.getText();
@@ -48,6 +54,7 @@ public class InterfaceAjoutStagiaireCtrl {
 	    String promotion = promoS.getText();
 	    String annee = anneeS.getText();
 	    Stagiaire stagiaireAjouter = new Stagiaire(nom,prenom,departement,promotion,annee);
+	    monArbre.ajouter(stagiaireAjouter);
 
 	} else {
 	    Alert alert = new Alert(AlertType.ERROR);

@@ -1,1 +1,58 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.buttonCo {
+ -fx-background-color:#90ee90;
+  -fx-text-color: black;
+  -fx-font-weight: bold;
+  -fx-border: none;
+  -fx-cursor: pointer;
+  -fx-border-radius: 20px;
+  -fx-text-align: center
+    }
+    
+.buttonAplus {
+ -fx-background-color:#ffb6c1;
+  -fx-text-color: black;
+  -fx-font-weight: bold;
+  -fx-border: none;
+  -fx-cursor: pointer;
+  -fx-border-radius: 20px;
+  -fx-text-align: center
+    }
+    
+.buttonPropos {
+ -fx-background-color:#da70d6;
+  -fx-text-color: black;
+  -fx-font-weight: bold;
+  -fx-border: none;
+  -fx-cursor: pointer;
+  -fx-border-radius: 20px;
+  -fx-text-align: center
+    }
+    
+ .labelcopyRight{
+-fx-font-family: "Lucida Sans Unicode";
+-fx-text-fill:black;
+-fx-font-posture:italic;
+    }
+  
+  .styleTitle{
+-fx-font-family: "Lucida Sans Unicode";
+-fx-text-fill:black;
+-fx-font-weight: bold;
+-fx-font-size: 25px
+}
+
+.labelDetails{
+-fx-font-family: "Lucida Sans Unicode";
+-fx-text-fill:black;
+-fx-font-size: 15px
+	
+}
+
+.labelRadioBtn{
+-fx-font-family: "Lucida Sans Unicode";
+-fx-text-fill:black;
+-fx-font-size: 13px
+	
+}

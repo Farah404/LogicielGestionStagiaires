@@ -39,44 +39,44 @@
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="431.0" prefWidth="911.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tblS" layoutX="23.0" layoutY="6.0" prefHeight="391.0" prefWidth="500.0">
+            <TableView fx:id="tblS" layoutX="23.0" layoutY="6.0" prefHeight="391.0" prefWidth="510.0">
               <columns>
                 <TableColumn fx:id="nomS" prefWidth="92.0" text="Nom" />
                 <TableColumn fx:id="prenomS" prefWidth="88.0" text="Prénom" />
                   <TableColumn fx:id="dptS" prefWidth="100.0" text="Département" />
-                  <TableColumn fx:id="promoS" prefWidth="94.0" text="Promotion" />
-                  <TableColumn fx:id="anneeS" prefWidth="146.0" text="Année d'entrée" />
+                  <TableColumn fx:id="promoS" prefWidth="104.0" text="Promotion" />
+                  <TableColumn fx:id="anneeS" prefWidth="136.0" text="Année d'entrée" />
               </columns>
             </TableView>
-            <Button fx:id="ajoutBtn" layoutX="550.0" layoutY="280.0" mnemonicParsing="false" onAction="#allerVersInterfaceAjoutStagiaire" prefHeight="25.0" prefWidth="135.0" text="Ajouter un stagiaire" />
-            <Button fx:id="modifBtn" layoutX="550.0" layoutY="310.0" mnemonicParsing="false" onAction="#allerVersInterfaceModifierStagiaire" prefHeight="25.0" prefWidth="135.0" text="Modifier le stagiaire" />
+            <Button fx:id="ajoutBtn" layoutX="550.0" layoutY="280.0" mnemonicParsing="false" onAction="#allerVersInterfaceAjoutStagiaire" prefHeight="25.0" prefWidth="145.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Ajouter un stagiaire" />
+            <Button fx:id="modifBtn" layoutX="550.0" layoutY="310.0" mnemonicParsing="false" onAction="#allerVersInterfaceModifierStagiaire" prefHeight="25.0" prefWidth="145.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Modifier le stagiaire" />
             <Pane layoutX="547.0" layoutY="16.0" prefHeight="229.0" prefWidth="378.0">
                <children>
-                  <Label layoutX="25.0" layoutY="35.0" text="Nom" />
-                  <Label layoutX="25.0" layoutY="70.0" text="Département" />
-                  <Label layoutX="25.0" layoutY="105.0" text="Promotion" />
-                  <Label layoutX="25.0" layoutY="140.0" text="Année" />
-                  <Button layoutX="229.0" layoutY="186.0" mnemonicParsing="false" text="Rechercher" />
-                  <Label layoutX="24.0" layoutY="6.0" text="Recherche Avancée" underline="true" />
-                  <TextField fx:id="nomChercher" layoutX="155.0" layoutY="31.0" />
-                  <TextField fx:id="dptChercher" layoutX="155.0" layoutY="66.0" />
-                  <TextField fx:id="promoChercher" layoutX="155.0" layoutY="101.0" />
-                  <TextField fx:id="anneeChercher" layoutX="155.0" layoutY="136.0" />
-                  <Hyperlink layoutX="235.0" layoutY="164.0" text="Reinitialiser" />
+                  <Label layoutX="25.0" layoutY="35.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nom" />
+                  <Label layoutX="25.0" layoutY="70.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Département" />
+                  <Label layoutX="25.0" layoutY="105.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Promotion" />
+                  <Label layoutX="25.0" layoutY="140.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Année" />
+                  <Button layoutX="155.0" layoutY="184.0" mnemonicParsing="false" prefWidth="150.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Rechercher" />
+                  <Label layoutX="25.0" layoutY="-12.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Recherche Avancée" underline="true" />
+                  <TextField fx:id="nomChercher" layoutX="155.0" layoutY="31.0" prefWidth="150.0" />
+                  <TextField fx:id="dptChercher" layoutX="155.0" layoutY="66.0" prefWidth="150.0" />
+                  <TextField fx:id="promoChercher" layoutX="155.0" layoutY="101.0" prefWidth="150.0" />
+                  <TextField fx:id="anneeChercher" layoutX="155.0" layoutY="136.0" prefWidth="150.0" />
+                  <Hyperlink layoutX="173.0" layoutY="161.0" text="Reinitialiser les critères " />
                </children>
             </Pane>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="703.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="695.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
             <Separator layoutX="536.0" layoutY="230.0" prefHeight="5.0" prefWidth="360.0" />
-            <Label layoutX="550.0" layoutY="240.0" text="Nombre totale de stagiaires" />
-            <TextField layoutX="703.0" layoutY="236.0" />
+            <Label layoutX="550.0" layoutY="240.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nombre totale de stagiaires" />
+            <TextField layoutX="764.0" layoutY="240.0" prefHeight="25.0" prefWidth="95.0" />
          </children>
       </AnchorPane>
    </center>
    <bottom>
-      <Label text="Copyrights reserved @ISIKA FHF" BorderPane.alignment="CENTER" />
+      <Label styleClass="labelcopyRight" stylesheets="@../style/style.css" text="Copyrights reserved @ISIKA FHF" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

@@ -35,10 +35,10 @@ public class Recherche {
 		if(attributeType.equalsIgnoreCase("nom")) {
 			return 1;
 		}
-		else if(attributeType.equalsIgnoreCase("anneeEntree")) {
+		else if(attributeType.equalsIgnoreCase("annee")) {
 			return 2;
 		}
-		else if(attributeType.equalsIgnoreCase("promo")) {
+		else if(attributeType.equalsIgnoreCase("promotion")) {
 			return 3;
 		}
 		else if(attributeType.equalsIgnoreCase("departement")) {
@@ -55,13 +55,6 @@ public class Recherche {
 		return chercherDepartement(cle, arbre.getRacine(),listRechDep);
 	}
 
-	/**
-	 *
-	 * @param cle
-	 * @param r
-	 * @param listResult
-	 * @return
-	 */
 	private static List<Stagiaire> chercherDepartement(String cle, Noeud r, List<Stagiaire> listResult) {
 		if (r == null){
 			return listResult;
@@ -69,24 +62,17 @@ public class Recherche {
 		chercherDepartement(cle, r.getGauche(), listResult);
 		if (cle.compareTo(r.getStagiaire().getDepartement()) == 0){
 			listResult.add(r.getStagiaire());
-//			System.out.println(r.getStagiaire() + " ");
 		}
 		chercherDepartement(cle, r.getDroit(), listResult);
 		return listResult;
 	}
-//MERHODE DE RECHERCHE PAR NOM//
+	
+//METHODE DE RECHERCHE PAR NOM//
 	public static List<Stagiaire> chercherNom(String cle, ArbreStagiaire arbre) {
 		List<Stagiaire> listRechNom = new ArrayList<>();
 		return chercherNom(cle, arbre.getRacine(), listRechNom);
 	}
 
-	/**
-	 *
-	 * @param cle
-	 * @param r
-	 * @param listResult
-	 * @return
-	 */
 	private static List<Stagiaire> chercherNom(String cle, Noeud r, List<Stagiaire> listResult) {
 		if (r == null){
 			return listResult;
@@ -94,9 +80,7 @@ public class Recherche {
 		chercherNom(cle, r.getGauche(), listResult);
 		if (cle.compareTo(r.getStagiaire().getNom()) == 0){
 			listResult.add(r.getStagiaire());
-//			System.out.println(r.getStagiaire() + " ");
 		}
-//		System.out.println(r.getStagiaire().getDepartement() + " ");
 		chercherNom(cle, r.getDroit(), listResult);
 		return listResult;
 	}
@@ -106,13 +90,6 @@ public class Recherche {
 		return chercherAnneeEntree(cle, arbre.getRacine(), listRechAnnee);
 	}
 
-	/**
-	 *
-	 * @param cle
-	 * @param r
-	 * @param listResult
-	 * @return
-	 */
 	private static List<Stagiaire> chercherAnneeEntree(String cle, Noeud r, List<Stagiaire> listResult) {
 		if (r == null){
 			return listResult;
@@ -132,13 +109,6 @@ public class Recherche {
 		return chercherPromotion(cle, arbre.getRacine(), listRechPromo);
 	}
 
-	/**
-	 *
-	 * @param cle
-	 * @param r
-	 * @param listResult
-	 * @return
-	 */
 	private static List<Stagiaire> chercherPromotion(String cle, Noeud r, List<Stagiaire> listResult) {
 		if (r == null){
 			return listResult;
@@ -146,7 +116,6 @@ public class Recherche {
 		chercherPromotion(cle, r.getGauche(), listResult);
 		if (cle.compareTo(r.getStagiaire().getPromotion()) == 0 ){
 			listResult.add(r.getStagiaire());
-//			System.out.println(r.getStagiaire() + " ");
 		}
 		chercherPromotion(cle, r.getDroit(), listResult);
 		return listResult;
@@ -158,13 +127,6 @@ public class Recherche {
 		return chercherPromotionFull(cle, arbre.getRacine(), listRechPromo);
 	}
 
-	/**
-	 *
-	 * @param cle
-	 * @param r
-	 * @param listResult
-	 * @return
-	 */
 	private static List<Stagiaire> chercherPromotionFull(String cle, Noeud r, List<Stagiaire> listResult) {
 		if (r == null){
 			return listResult;
@@ -172,7 +134,6 @@ public class Recherche {
 		chercherPromotionFull(cle, r.getGauche(), listResult);
 		if (cle.compareTo(r.getStagiaire().getPromotion()) == -3 ){
 			listResult.add(r.getStagiaire());
-//			System.out.println(r.getStagiaire() + " ");
 		}
 		chercherPromotionFull(cle, r.getDroit(), listResult);
 		return listResult;
@@ -185,14 +146,6 @@ public class Recherche {
 		return chercherCle(cle, key, arbre, listRech);
 	}
 
-	/**
-	 *
-	 * @param cle
-	 * @param key
-	 * @param arbre
-	 * @param listResult
-	 * @return
-	 */
 	private static List<Stagiaire> chercherCle(String cle, int key, ArbreStagiaire arbre, List<Stagiaire> listResult) {
 		switch (key) {
 		case 1:
@@ -332,21 +285,12 @@ public class Recherche {
 
 	//************************ Méthhode d'ajout pour la création de mini-arbre ************************
 
-	/**
-	 *
-	 * @param listStagiaire
-	 * @param arbre
-	 */
 	public static void ajouterNoeudAll(List<Stagiaire> listStagiaire, ArbreStagiaire arbre) {
 		for (Stagiaire stagiaire : listStagiaire) {
 			ajouterNoeud(stagiaire, arbre);
 		}
 	}
-	/**
-	 *
-	 * @param x
-	 * @param arbre
-	 */
+
 	public static void ajouterNoeud(Stagiaire x, ArbreStagiaire arbre) {
 		if (arbre.getRacine() == null) {
 			arbre.setRacine(new Noeud(x));
@@ -354,12 +298,7 @@ public class Recherche {
 		ajouterNoeud(x, arbre.getRacine());
 	}
 
-	/**
-	 *
-	 * @param x
-	 * @param courant
-	 * @return
-	 */
+
 	private static Noeud ajouterNoeud(Stagiaire x, Noeud courant) {
 		if(courant == null) {
 			return new Noeud(x);

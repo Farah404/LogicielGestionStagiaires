@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -11,36 +12,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceAuthentificationCtrl">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="720.0" styleClass="body" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceAuthentificationCtrl">
    <center>
-      <AnchorPane prefHeight="246.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="494.0" prefWidth="655.0" styleClass="stylebackground" stylesheets="@../style/style.css" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="80.0" layoutY="120.0" text="Nom d'utilisateur" />
-            <Label layoutX="80.0" layoutY="160.0" text="Mot de passe" />
-            <TextField fx:id="nomUtilisateurTxtField" layoutX="252.0" layoutY="116.0" prefHeight="25.0" prefWidth="243.0" />
-            <Label layoutX="258.0" layoutY="14.0" text="Authentification" />
-            <Button fx:id="connexionBtn" layoutX="420.0" layoutY="220.0" mnemonicParsing="false" onAction="#connexionButtonAction" text="Connexion" />
-            <RadioButton fx:id="formatteurRadioBtn" layoutX="261.0" layoutY="80.0" mnemonicParsing="false" text="Formateur">
+            <Label layoutX="80.0" layoutY="150.0" styleClass="labelDetails" text="Nom d'utilisateur" />
+            <Label layoutX="80.0" layoutY="190.0" styleClass="labelDetails" text="Mot de passe" />
+            <TextField fx:id="nomUtilisateurTxtField" layoutX="230.0" layoutY="150.0" prefHeight="25.0" prefWidth="245.0" />
+            <Label layoutX="246.0" layoutY="62.0" styleClass="styleTitle" stylesheets="@../style/style.css" text="Authentification" />
+            <Button fx:id="connexionBtn" layoutX="230.0" layoutY="233.0" mnemonicParsing="false" onAction="#connexionButtonAction" prefHeight="25.0" prefWidth="245.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Connexion" textAlignment="CENTER" />
+            <RadioButton fx:id="formatteurRadioBtn" layoutX="230.0" layoutY="114.0" mnemonicParsing="false" styleClass="labelRadioBtn" text="Formateur">
                <toggleGroup>
                   <ToggleGroup fx:id="fa" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="administrateurRadioBtn" layoutX="387.0" layoutY="80.0" mnemonicParsing="false" text="Administrateur" toggleGroup="$fa" />
-            <Label layoutX="80.0" layoutY="80.0" text="Je suis" />
-            <PasswordField fx:id="mdpPassField" layoutX="253.0" layoutY="156.0" onAction="#connexionButtonAction" prefHeight="25.0" prefWidth="242.0" />
-            <ImageView fx:id="goToIsikaWebsite" fitHeight="150.0" fitWidth="200.0" layoutX="201.0" layoutY="217.0" onMouseClicked="#goToIsikaWebsite" pickOnBounds="true" preserveRatio="true">
+            <RadioButton fx:id="administrateurRadioBtn" layoutX="353.0" layoutY="114.0" mnemonicParsing="false" styleClass="labelRadioBtn" text="Administrateur" toggleGroup="$fa" />
+            <Label layoutX="80.0" layoutY="113.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Je suis:" />
+            <PasswordField fx:id="mdpPassField" layoutX="230.0" layoutY="190.0" onAction="#connexionButtonAction" prefHeight="25.0" prefWidth="245.0" />
+            <ImageView fx:id="goToIsikaWebsite" fitHeight="150.0" fitWidth="200.0" layoutX="243.0" layoutY="300.0" onMouseClicked="#goToIsikaWebsite" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="propos" layoutX="420.0" layoutY="250.0" mnemonicParsing="false" onAction="#AllerVersPropos" prefWidth="72.0" text="A Propos" />
-            <Button fx:id="quitterBtn" layoutX="420.0" layoutY="280.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="72.0" text="Quitter" />
+            <Button fx:id="propos" layoutX="230.0" layoutY="263.0" mnemonicParsing="false" onAction="#AllerVersPropos" prefWidth="245.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="A Propos" />
+            <Button fx:id="quitterBtn" layoutX="230.0" layoutY="293.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="245.0" styleClass="buttonAplus" stylesheets="@../style/style.css" text="Quitter" />
+            <ImageView fitHeight="505.0" fitWidth="229.0" layoutX="498.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../vert.jpg" />
+               </image>
+            </ImageView>
+            <Separator layoutX="494.0" layoutY="3.0" orientation="VERTICAL" prefHeight="497.0" prefWidth="7.0" />
          </children>
       </AnchorPane>
    </center>
    <bottom>
-      <Label text="Copyrights reserved @ISIKA FHF" BorderPane.alignment="CENTER" />
+      <Label styleClass="labelcopyRight" stylesheets="@../style/style.css" text="Copyrights reserved @ISIKA FHF" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
-      <Label text="Annuaire Stagiaire" BorderPane.alignment="CENTER" />
+      <Label styleClass="labelcopyRight" text="Annuaire Stagiaire" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>

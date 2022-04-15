@@ -120,5 +120,36 @@ public class InterfaceAdministrateurCtrl implements Initializable{
 	proposStage.show();
     }
 
+    //METHODE POUR PRE REMPLIR LES CHAMPS DANS FENETRE MODIFICATION STAGIAIRE//
+    public String ChampsModificationNom() {
+	Stagiaire stagiaireModif = this.tblS.getSelectionModel().getSelectedItem();
+	String nom = stagiaireModif.getNom();
+	return nom;
+}
+
+public String txtFieldModificationPrenom() {
+	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
+	String prenom = stgrMdf.getPrenom();
+	return prenom;
+}
+
+public String txtFieldModificationDepartement() {
+	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
+	String departement = stgrMdf.getDepartement();
+	return departement;
+}
+
+public String txtFieldModificationPromotion() {
+	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
+	String promotion = stgrMdf.getPromotion();
+	return promotion;
+}
+
+public String txtFieldModificationAnnee() {
+	Stagiaire stgrMdf = this.tblS.getSelectionModel().getSelectedItem();
+	String annee = stgrMdf.getAnnee();
+	return annee;
+}
+
     }
 
