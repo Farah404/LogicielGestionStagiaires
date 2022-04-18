@@ -21,7 +21,7 @@
             <TextField fx:id="dptMdf" layoutX="168.0" layoutY="160.0" prefWidth="180.0" />
             <TextField fx:id="promoMdf" layoutX="168.0" layoutY="190.0" prefWidth="180.0" />
             <TextField fx:id="anneeMdf" layoutX="168.0" layoutY="220.0" prefWidth="180.0" />
-            <Button layoutX="168.0" layoutY="251.0" mnemonicParsing="false" prefWidth="180.0" styleClass="buttonCo" text="Valider les modifications" />
+            <Button fx:id="validerBtn" layoutX="168.0" layoutY="251.0" mnemonicParsing="false" prefWidth="180.0" styleClass="buttonCo" text="Valider les modifications" />
          </children>
       </AnchorPane>
    </center>
