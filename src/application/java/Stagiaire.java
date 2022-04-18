@@ -66,8 +66,12 @@ public class Stagiaire implements Comparable<Stagiaire> {
 
     @Override
     public String toString() {
-	return "Stagiaire [nom=" + nom + ", prenom=" + prenom + ", departement=" + departement + ", promotion="
-		+ promotion + ", annee=" + annee + "]";
+	return "Stagiaire : \n"
+		   + "	Nom " + nom + "\n"
+		   + " Prenom " + prenom + "\n"
+		   + " Departement " + departement +"\n"
+		   + " Promotion " + promotion + "\n"
+		   + " Annee=" + annee ;
     }
 
     @Override

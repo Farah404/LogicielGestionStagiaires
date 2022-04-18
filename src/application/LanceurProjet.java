@@ -24,7 +24,7 @@ public class LanceurProjet extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource(INTERFACE_ADMINISTRATEUR));
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource(INTERFACE_FORMATTEUR));
 			Scene scene = new Scene(root, root.getPrefWidth(), root.getPrefHeight());
 			scene.getStylesheets().add(getClass().getResource(STYLE_SHEET).toExternalForm());
 			primaryStage.setScene(scene);

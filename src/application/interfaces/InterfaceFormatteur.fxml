@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceFormatteurCtrl">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceFormatteurCtrl">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
-              <MenuItem mnemonicParsing="false" text="Imprimer la liste des Stagiaires" />
+              <MenuItem mnemonicParsing="false" onAction="#imprimerPdf" text="Imprimer la liste des Stagiaires" />
                   <MenuItem mnemonicParsing="false" onAction="#deconnexion" text="Déconexion" />
                   <MenuItem mnemonicParsing="false" onAction="#closeWindow" text="Fermer l'application" />
             </items>
@@ -41,39 +42,39 @@
          <children>
             <TableView fx:id="tblS" layoutX="23.0" layoutY="6.0" prefHeight="391.0" prefWidth="510.0">
               <columns>
-                <TableColumn fx:id="nomS" prefWidth="139.0" text="Nom" />
-                <TableColumn fx:id="prenomS" prefWidth="91.0" text="Prénom" />
-                  <TableColumn fx:id="dptS" prefWidth="94.0" text="Département" />
-                  <TableColumn fx:id="promoS" prefWidth="74.0" text="Promotion" />
-                  <TableColumn fx:id="anneeS" prefWidth="122.0" text="Année d'entrée" />
+                <TableColumn fx:id="nomS" prefWidth="92.0" text="Nom" />
+                <TableColumn fx:id="prenomS" prefWidth="88.0" text="Prénom" />
+                  <TableColumn fx:id="dptS" prefWidth="100.0" text="Département" />
+                  <TableColumn fx:id="promoS" prefWidth="104.0" text="Promotion" />
+                  <TableColumn fx:id="anneeS" prefWidth="136.0" text="Année d'entrée" />
               </columns>
             </TableView>
-            <Button fx:id="ajoutBtn" layoutX="550.0" layoutY="280.0" mnemonicParsing="false" onAction="#allerVersInterfaceAjoutStagiaire" prefHeight="25.0" prefWidth="145.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Ajouter un stagiaire" />
-            <Button layoutX="550.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="145.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Modifier le stagiaire" />
+            <Button fx:id="ajoutBtn" layoutX="550.0" layoutY="245.0" mnemonicParsing="false" onAction="#allerVersInterfaceAjoutStagiaire" prefHeight="25.0" prefWidth="145.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Ajouter un stagiaire" />
+            <Button fx:id="modifBtn" layoutX="550.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="145.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Modifier le stagiaire" />
             <Pane layoutX="547.0" layoutY="16.0" prefHeight="229.0" prefWidth="378.0">
                <children>
-                  <Label layoutX="25.0" layoutY="35.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nom" />
-                  <Label layoutX="25.0" layoutY="70.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Département" />
-                  <Label layoutX="25.0" layoutY="105.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Promotion" />
-                  <Label layoutX="25.0" layoutY="140.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Année" />
-                  <Button layoutX="155.0" layoutY="184.0" maxWidth="155.0" mnemonicParsing="false" prefWidth="155.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Rechercher" />
-                  <Label layoutX="25.0" layoutY="-12.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Recherche Avancée" underline="true" />
-                  <TextField fx:id="nomCherhcer" layoutX="155.0" layoutY="31.0" maxWidth="155.0" />
-                  <TextField fx:id="dptCherhcer" layoutX="155.0" layoutY="66.0" maxWidth="155.0" />
-                  <TextField fx:id="promoCherhcer" layoutX="155.0" layoutY="101.0" maxWidth="155.0" />
-                  <TextField fx:id="anneeCherhcer" layoutX="155.0" layoutY="136.0" maxWidth="155.0" />
-                  <Hyperlink layoutX="173.0" layoutY="161.0" text="Reinitialiser les critères " />
+                  <RadioButton fx:id="nomRadioBtn" layoutX="7.0" layoutY="38.0" mnemonicParsing="false" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nom">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="nda" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="dptRadioBtn" layoutX="121.0" layoutY="38.0" mnemonicParsing="false" styleClass="labelDetails" stylesheets="@../style/style.css" text="Département" toggleGroup="$nda" />
+                  <RadioButton fx:id="anneeRadioBtn" layoutX="284.0" layoutY="38.0" mnemonicParsing="false" styleClass="labelDetails" stylesheets="@../style/style.css" text="Année" toggleGroup="$nda" />
+                  <Button fx:id="rechercheSimpleBtn" layoutX="7.0" layoutY="123.0" mnemonicParsing="false" onAction="#rechercheSimple" prefHeight="25.0" prefWidth="350.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Rechercher" />
+                  <TextField fx:id="critere" layoutX="7.0" layoutY="83.0" prefHeight="25.0" prefWidth="350.0" />
+                  <TextField fx:id="stgrTotal" layoutX="219.0" layoutY="183.0" prefHeight="25.0" prefWidth="121.0" />
+                  <Label layoutX="7.0" layoutY="183.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nombre totale de stagiaires" />
+                  <Label layoutX="7.0" layoutY="2.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Selectionnez votre critère de recherche:" underline="true" />
                </children>
             </Pane>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="698.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="699.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Separator layoutX="536.0" layoutY="230.0" prefHeight="5.0" prefWidth="360.0" />
-            <Label layoutX="550.0" layoutY="240.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nombre totale de stagiaires" />
-            <TextField fx:id="stgrTotal" layoutX="764.0" layoutY="240.0" prefWidth="95.0" styleClass="labelDetails" stylesheets="@../style/style.css" />
-            <Button layoutX="550.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="145.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Supprimer le Stagiaire" />
+            <Separator layoutX="536.0" layoutY="184.0" prefHeight="5.0" prefWidth="360.0" />
+            <Button fx:id="delBtn" layoutX="550.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="145.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Supprimer le stagiaire" />
+            <Button fx:id="refresh" layoutX="550.0" layoutY="365.0" mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="145.0" styleClass="buttonPropos" stylesheets="@../style/style.css" text="Mettre à jour la liste" />
          </children>
       </AnchorPane>
    </center>

@@ -44,6 +44,7 @@ public class InterfaceAjoutStagiaireCtrl {
 	    Stagiaire S = new Stagiaire(nom, prenom, departement, promotion, annee);
 	    monArbre.ajouter(S);
 
+
 	    Alert alert = new Alert(AlertType.INFORMATION);
 	    alert.setTitle("Ajout de stagiaire");
 	    alert.setHeaderText(null);

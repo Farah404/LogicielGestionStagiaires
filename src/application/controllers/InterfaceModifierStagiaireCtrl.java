@@ -52,29 +52,9 @@ public class InterfaceModifierStagiaireCtrl implements Initializable {
 	dptMdf.setText(InterfaceAdministrateurCtrl.stg.getPromotion());
 	promoMdf.setText(InterfaceAdministrateurCtrl.stg.getDepartement());
 	anneeMdf.setText(InterfaceAdministrateurCtrl.stg.getAnnee());
-    
-	validerBtn.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-	    @Override
-	    public void handle(ActionEvent event) {
-		try {
-		    modifierStagiaire();
-		} catch (IOException e) {
-
-		    e.printStackTrace();
-		}
-
-	    }
-
-	});
     }
 
-    String nomAncien = InterfaceAdministrateurCtrl.stg.getNom();
-    String prenomAncien = InterfaceAdministrateurCtrl.stg.getPrenom();
-    String dptAncien = InterfaceAdministrateurCtrl.stg.getPromotion();
-    String promoAncien = InterfaceAdministrateurCtrl.stg.getDepartement();
-    String anneeAncien = InterfaceAdministrateurCtrl.stg.getAnnee();
-    Stagiaire ancienStagiaire = new Stagiaire(nomAncien, prenomAncien, dptAncien, promoAncien, anneeAncien);
-
+    @FXML
     private void modifierStagiaire() throws IOException {
 	String nomNouveau = nomMdf.getText();
 	String prenomNouveau = prenomMdf.getText();
@@ -82,20 +62,11 @@ public class InterfaceModifierStagiaireCtrl implements Initializable {
 	String promoNouveau = promoMdf.getText();
 	String anneeNouveau = anneeMdf.getText();
 	Stagiaire nouveauStagaire = new Stagiaire(nomNouveau, prenomNouveau, dptNouveau, promoNouveau, anneeNouveau);
+	monArbre.ajouter(nouveauStagaire); 
+
 	Alert modifAlerte = new Alert(AlertType.CONFIRMATION);
 	modifAlerte.setTitle("Modification d'un stagiaire");
 	modifAlerte.setHeaderText("Voulez-vous valider les modifications ?");
 	Optional<ButtonType> option = modifAlerte.showAndWait();
-
-	if (option.get() == ButtonType.OK) {
-	    Alert confirmModif = new Alert(AlertType.CONFIRMATION);
-	    confirmModif.setTitle("Modification d'un stagiaire");
-	    confirmModif.setHeaderText("Les données du stagiaire selectionné ont bien été modifiées");
-	    confirmModif.showAndWait();
-	    monArbre.modifier(ancienStagiaire, nouveauStagaire);
-
-	} else {
-
-	}
     }
 }
