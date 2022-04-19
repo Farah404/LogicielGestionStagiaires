@@ -1,5 +1,6 @@
 package application.controllers;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -50,6 +51,7 @@ public class InterfaceAdministrateurCtrl implements Initializable {
     private static final String A_PROPOS = "/application/interfaces/InterfacePropos.fxml";
     private static final String AUTHENTIFICATION = "/application/interfaces/InterfaceAuthentification.fxml";
     private static final String DOCUMENT_PDF = "C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\ListeStagiaire.pdf";
+    private static final String MANUEL_PDF = "C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\Manuel\\Manuel.pdf";
     @FXML
     public TableColumn<Stagiaire, String> nomS;
     @FXML
@@ -340,6 +342,26 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	tblS.getItems().addAll(Recherche.parcoursStagiaire(monArbre)); 
     }
 
+    
+    //METHODE POUR OUVRIR LE MANUEL D'UTILISATION//
+    public void ouvrirManuelPdf() {
+	try {
+	    File manuelPdfFile = new File(MANUEL_PDF);
+	    if (manuelPdfFile.exists()) {
+		Desktop.isDesktopSupported();
+		Desktop.getDesktop().open(manuelPdfFile);
+	    }else {	
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("PDF 404");
+		alert.setContentText("Le manuel PDF n'existe pas");
+		alert.showAndWait();
+	    }
+	} catch (Exception ex) {
+
+	}
+    }
+    
+    
     // METHODE POUR IMPRIMER LA LISTE SOUS FORMAT PDF//
     private void pdf(List<Stagiaire> list) throws FileNotFoundException, DocumentException {
 	FileOutputStream fos = new FileOutputStream(new File(DOCUMENT_PDF));

@@ -94,7 +94,6 @@ public class Recherche {
 		ajouterNoeud(x, arbre.getRacine());
 	}
 
-
 	private static Noeud ajouterNoeud(Stagiaire x, Noeud courant) {
 		if(courant == null) {
 			return new Noeud(x);
@@ -106,34 +105,5 @@ public class Recherche {
 				courant.setDroit(ajouterNoeud(x, courant.getDroit()));
 		}
 		return courant;
-	}
-
-//CREATION DES SETS//
-
-	public static Set<String> getListePromo(ArbreStagiaire monArbre) {
-		List<Stagiaire> stagiaires = parcoursStagiaire(monArbre);
-		Set<String> listePromo = new HashSet<>();
-		for(Stagiaire stagiaire : stagiaires){
-			listePromo.add(stagiaire.getPromotion());
-		}
-		return listePromo;
-	}
-
-	public static Set<String> getListeDepartement(ArbreStagiaire monArbre) {
-		List<Stagiaire> stagiaires = parcoursStagiaire(monArbre);
-		Set<String> listeDepartement = new HashSet<>();
-		for(Stagiaire stagiaire : stagiaires){
-			listeDepartement.add(stagiaire.getDepartement());
-		}
-		return listeDepartement;
-	}
-
-	public static Set<String> getListeAnneeEntree(ArbreStagiaire monArbre) {
-		List<Stagiaire> stagiaires = parcoursStagiaire(monArbre);
-		Set<String> listeAnneeEntree = new HashSet<>();
-		for(Stagiaire stagiaire : stagiaires){
-			listeAnneeEntree.add(stagiaire.getAnnee());
-		}
-		return listeAnneeEntree;
 	}
 }
