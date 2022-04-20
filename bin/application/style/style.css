@@ -1,34 +1,15 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-.buttonCo {
- -fx-background-color:DarkGray;
-  -fx-text-color: DarkOrange;
+.allButton {
+ -fx-background-color:#484443;
+  -fx-text-color: #ea8111;
   -fx-font-weight: bold;
   -fx-border: none;
   -fx-cursor: pointer;
   -fx-border-radius: 20px;
   -fx-text-align: center
     }
-    
-.buttonAplus {
- -fx-background-color:DarkGray;
-  -fx-text-color: DarkOrange;
-  -fx-font-weight: bold;
-  -fx-border: none;
-  -fx-cursor: pointer;
-  -fx-border-radius: 20px;
-  -fx-text-align: center
-    }
-    
-.buttonPropos {
- -fx-background-color:DarkGray;
-  -fx-text-color: DarkOrange;
-  -fx-font-weight: bold;
-  -fx-border: none;
-  -fx-cursor: pointer;
-  -fx-border-radius: 20px;
-  -fx-text-align: center
-    }
+
     
  .labelcopyRight{
 -fx-font-family: "Lucida Sans Unicode";

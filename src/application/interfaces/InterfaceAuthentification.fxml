@@ -20,7 +20,7 @@
             <Label layoutX="80.0" layoutY="190.0" styleClass="labelDetails" text="Mot de passe" />
             <TextField fx:id="nomUtilisateurTxtField" layoutX="230.0" layoutY="150.0" prefHeight="25.0" prefWidth="245.0" />
             <Label layoutX="246.0" layoutY="62.0" styleClass="styleTitle" stylesheets="@../style/style.css" text="Authentification" />
-            <Button fx:id="connexionBtn" layoutX="230.0" layoutY="233.0" mnemonicParsing="false" onAction="#connexionButtonAction" prefHeight="25.0" prefWidth="245.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Connexion" textAlignment="CENTER" />
+            <Button fx:id="connexionBtn" layoutX="230.0" layoutY="233.0" mnemonicParsing="false" onAction="#connexionButtonAction" prefHeight="25.0" prefWidth="245.0" styleClass="allButton" stylesheets="@../style/style.css" text="Connexion" textAlignment="CENTER" textFill="#ea8111" />
             <RadioButton fx:id="formatteurRadioBtn" layoutX="230.0" layoutY="114.0" mnemonicParsing="false" styleClass="labelRadioBtn" text="Formateur">
                <toggleGroup>
                   <ToggleGroup fx:id="fa" />
@@ -33,8 +33,8 @@
                   <Image url="@../../../Isika-logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="propos" layoutX="230.0" layoutY="263.0" mnemonicParsing="false" onAction="#AllerVersPropos" prefWidth="245.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="A Propos" />
-            <Button fx:id="quitterBtn" layoutX="230.0" layoutY="293.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="245.0" styleClass="buttonCo" stylesheets="@../style/style.css" text="Quitter" />
+            <Button fx:id="propos" layoutX="230.0" layoutY="263.0" mnemonicParsing="false" onAction="#AllerVersPropos" prefWidth="245.0" styleClass="allButton" stylesheets="@../style/style.css" text="A Propos" textFill="#ea8111" />
+            <Button fx:id="quitterBtn" layoutX="230.0" layoutY="293.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="245.0" styleClass="allButton" stylesheets="@../style/style.css" text="Quitter" textFill="#ea8111" />
             <ImageView fitHeight="505.0" fitWidth="229.0" layoutX="498.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../vert.jpg" />

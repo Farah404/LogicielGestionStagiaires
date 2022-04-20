@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceFormatteurCtrl">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.InterfaceRechercheAvanceeCtrl">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -25,11 +25,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#closeWindow" text="Fermer l'application" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Recherche">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#AllerVersRechercheAvancee" text="Recherche mulricritères" />
-               </items>
-            </Menu>
           <Menu mnemonicParsing="false" text="Aide">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#ouvrirManuelPdf" text="Manual d'utilisation" />
@@ -63,27 +58,20 @@
                   <TableColumn fx:id="anneeS" prefWidth="136.0" text="Année d'entrée" />
               </columns>
             </TableView>
-            <Button fx:id="ajoutBtn" layoutX="774.0" layoutY="233.0" mnemonicParsing="false" onAction="#ajouterStagiaire" prefHeight="25.0" prefWidth="125.0" styleClass="allButton" stylesheets="@../style/style.css" text="Ajouter" textFill="#ea8111" />
-            <Button layoutX="774.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="125.0" styleClass="allButton" stylesheets="@../style/style.css" text="Modifier" textFill="#ea8111" />
-            <Button fx:id="delBtn" layoutX="774.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleMenuEditAction" prefHeight="25.0" prefWidth="125.0" styleClass="allButton" stylesheets="@../style/style.css" text="Supprimer" textFill="#ea8111" />
+            <Button fx:id="chercherBtn" layoutX="774.0" layoutY="313.0" mnemonicParsing="false" onAction="#rechercheAvancee" prefHeight="25.0" prefWidth="125.0" styleClass="allButton" stylesheets="@../style/style.css" text="Chercher" textFill="#ea8111" />
             <TextField fx:id="critere" layoutX="179.0" layoutY="23.0" prefHeight="25.0" prefWidth="354.0" />
             <Label layoutX="35.0" layoutY="21.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Recherche simple:" />
             <TextField fx:id="nomStgr" layoutX="774.0" layoutY="60.0" prefHeight="25.0" prefWidth="125.0" />
             <Label layoutX="557.0" layoutY="60.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Nom" />
-            <Label layoutX="557.0" layoutY="90.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Prenom" />
             <Label layoutX="557.0" layoutY="120.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Département" />
-            <Label layoutX="557.0" layoutY="155.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Promotion" />
             <Label layoutX="557.0" layoutY="190.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Année d'entrée" />
-            <TextField fx:id="prenomStgr" layoutX="774.0" layoutY="90.0" prefHeight="25.0" prefWidth="125.0" />
             <TextField fx:id="dptStgr" layoutX="774.0" layoutY="120.0" prefHeight="25.0" prefWidth="125.0" />
-            <TextField fx:id="promoStgr" layoutX="774.0" layoutY="155.0" prefHeight="25.0" prefWidth="125.0" />
             <TextField fx:id="anneeStgr" layoutX="774.0" layoutY="190.0" prefHeight="25.0" prefWidth="125.0" />
             <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="16.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../default.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="557.0" layoutY="24.0" styleClass="labelDetails" stylesheets="@../style/style.css" text="Gestion des Stagiaires" underline="true" />
          </children>
       </AnchorPane>
    </center>

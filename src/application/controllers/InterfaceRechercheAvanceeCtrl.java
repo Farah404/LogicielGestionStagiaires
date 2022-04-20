@@ -42,16 +42,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class InterfaceAdministrateurCtrl implements Initializable {
+public class InterfaceRechercheAvanceeCtrl implements Initializable {
     private static final String A_PROPOS = "/application/interfaces/InterfacePropos.fxml";
     private static final String AUTHENTIFICATION = "/application/interfaces/InterfaceAuthentification.fxml";
     private static final String DOCUMENT_PDF = "C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\ListeStagiaire.pdf";
     private static final String MANUEL_PDF = "C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\Manuel\\Manuel.pdf";
-    private static final String RECHERCHE_AVANCEE = "/application/interfaces/InterfaceRechercheAvancee.fxml";
 
     @FXML
     public TableColumn<Stagiaire, String> nomS;
@@ -66,34 +64,18 @@ public class InterfaceAdministrateurCtrl implements Initializable {
     @FXML
     public TableView<Stagiaire> tblS;
     @FXML
-    private TextField stgrTotal;
-    @FXML
-    private Button ajoutBtn;
-    @FXML
-    private Button modifBtn;
-    @FXML
-    private Button propos;
-    @FXML
-    private Button delBtn;
+    private Button chercherBtn;
     @FXML
     private TextField critere;
     @FXML
     private TextField nomStgr;
     @FXML
-    private TextField prenomStgr;
-    @FXML
     private TextField dptStgr;
-    @FXML
-    private TextField promoStgr;
     @FXML
     private TextField anneeStgr;
 
-    @FXML
-    private Button refresh;
 
-    static Stagiaire stagiaireMdf;
-
-    static ArbreStagiaire monArbre = new ArbreStagiaire();
+   static ArbreStagiaire monArbre = new ArbreStagiaire();
     ObservableList<Stagiaire> observableArrayList = FXCollections
 	    .observableArrayList(Recherche.parcoursStagiaire(monArbre));
 
@@ -106,122 +88,44 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	anneeS.setCellValueFactory(new PropertyValueFactory<Stagiaire, String>("annee"));
 	tblS.setItems(observableArrayList);
 
+	
 	critere.textProperty().addListener((obs, oldText, newText) -> {
-	    rechercheSimple();
-	});
-
-	delBtn.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-	    @Override
-	    public void handle(ActionEvent event) {
-		supprStagiaire();
-	    }
-	});
-
-	tblS.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-	    if (newVal != null) {
-		nomStgr.setText(newVal.getNom());
-		prenomStgr.setText(newVal.getPrenom());
-		dptStgr.setText(newVal.getDepartement());
-		promoStgr.setText(newVal.getPromotion());
-		anneeStgr.setText(newVal.getAnnee());
-	    }
+		rechercheSimple();
 	});
 
     }
-
-    // METHODE AJOUTER STAGIAIRE//
-    public void ajouterStagiaire() throws IOException {
-	String erreurs = validerSaisie();
-	if (erreurs.isEmpty()) {
-	    String nom = nomStgr.getText();
-	    String prenom = prenomStgr.getText();
-	    String departement = dptStgr.getText();
-	    String promotion = promoStgr.getText();
-	    String annee = anneeStgr.getText();
-	    Stagiaire S = new Stagiaire(nom, prenom, departement, promotion, annee);
-	    monArbre.ajouter(S);
-	    tblS.getItems().add(S);
-
-	    Alert alert = new Alert(AlertType.INFORMATION);
-	    alert.setTitle("Ajout de stagiaire");
-	    alert.setHeaderText(null);
-	    alert.setContentText("Le stagiaire a bien été ajouté à la liste");
-	    alert.showAndWait();
-	    this.nomStgr.clear();
-	    this.prenomStgr.clear();
-	    this.dptStgr.clear();
-	    this.promoStgr.clear();
-	    this.anneeStgr.clear();
-	} else {
-	    Alert alert = new Alert(AlertType.ERROR);
-	    alert.setHeaderText("Erreurs de saisie : ");
-	    alert.setContentText(erreurs);
-	    alert.show();
-	}
-    }
-
-    public String validerSaisie() {
-	StringBuilder errorsBuilder = new StringBuilder();
-	String nom = nomStgr.getText();
-	if (nom == null || nom.trim().isEmpty()) {
-	    errorsBuilder.append("Le nom du stagiaire doit être renseigné\n");
-	}
-	String prenom = prenomStgr.getText();
-	if (prenom.trim().isEmpty()) {
-	    errorsBuilder.append("Le prénom du stagiaire doit être renseigné\n");
-	}
-	String departement = dptStgr.getText();
-	if (departement.trim().isEmpty()) {
-	    errorsBuilder.append("Le département du stagiaire doit être renseigné\n");
-	}
-	String promotion = promoStgr.getText();
-	if (promotion.trim().isEmpty()) {
-	    errorsBuilder.append("La promotion du stagiaire doit être renseignée\n");
-	}
-	String annee = anneeStgr.getText();
-	if (annee == null || annee.trim().isEmpty()) {
-	    errorsBuilder.append("L'année d'inscription doit être renseignée\n");
-	}
-	return errorsBuilder.toString();
-    }
-
-    // METHODE MODIFIER STAGIAIRE//
-    public void modifierStagiaire() throws IOException {
-	Stagiaire nouveauStagiaire = new Stagiaire(nomStgr.getText(), prenomStgr.getText(), dptStgr.getText(),
-		promoStgr.getText(), anneeStgr.getText());
-
-	Stagiaire ancienStagiaire = tblS.getSelectionModel().getSelectedItem();
-
-	Alert modifierAlerte = new Alert(AlertType.CONFIRMATION);
-	modifierAlerte.setTitle("Modifier le stagiaire");
-	modifierAlerte.setHeaderText("Êtes-vous sûr de vouloir modifier les données de ce stagiaire ?");
-	Optional<ButtonType> option = modifierAlerte.showAndWait();
-	if (option.get() == ButtonType.OK) {
-	    monArbre.modifier(ancienStagiaire, nouveauStagiaire);
-	    tblS.getSelectionModel().clearSelection();
-	    tblS.getItems().clear();
-	    tblS.getItems().addAll(Recherche.parcoursStagiaire(monArbre));
-
-	} else {
-	}
-    }
+    
+    
+ //RECHERCHE AVANCEE//
+ 	@FXML
+ 	public void rechercheAvancee() throws IOException{
+ 		String keyword = dptStgr.getText();
+ 		String Keyword3 = nomStgr.getText().toUpperCase();
+ 		String Keyword2 = anneeStgr.getText();
+ 		if ((keyword.equals("")) && (Keyword2.equals("")) && (Keyword3.equals(""))) {
+ 			tblS.setItems(observableArrayList);
+ 		} else {
+ 			ObservableList<Stagiaire> filteredData = FXCollections.observableArrayList();
+ 			for (Stagiaire stg : observableArrayList) {
+ 				if ((stg.getDepartement().contains(keyword))) {
+ 					if (stg.getAnnee().contains(Keyword2)) {
+ 						if (stg.getNom().contains(Keyword3)) {
+ 						filteredData.add(stg);
+ 				}
+ 						
+ 					}	
+ 				tblS.setItems(filteredData);
+ 			}
+ 				
+ 			}
+ 		}
+ 		}
+ 
 
     // METHODE POUR FERMER L'APPLICATION//
     @FXML
     public void closeWindow() {
 	Platform.exit();
-    }
-
-    // METHODE POUR ALLER A LA FENETRE A RECHERCHE AVANCEE//
-    @FXML
-    private void AllerVersRechercheAvancee() throws IOException {
-	FXMLLoader loader = new FXMLLoader(getClass().getResource(RECHERCHE_AVANCEE));
-	Pane rootPane = (Pane) loader.load();
-	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
-	Stage rechercheStage = new Stage();
-	rechercheStage.setTitle("Recherche multi-critères");
-	rechercheStage.setScene(scene);
-	rechercheStage.show();
     }
 
     // METHODE POUR ALLER A LA FENETRE A PROPOS//
@@ -231,7 +135,7 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	Pane rootPane = (Pane) loader.load();
 	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
 	Stage proposStage = new Stage();
-	proposStage.setTitle("A Propos");
+	proposStage.setTitle("A propos");
 	proposStage.setScene(scene);
 	proposStage.show();
     }
@@ -239,15 +143,13 @@ public class InterfaceAdministrateurCtrl implements Initializable {
     // METHODE POUR SE DECONNECTER//
     @FXML
     private void deconnexion() throws IOException {
-	Stage decoStage = (Stage) ajoutBtn.getScene().getWindow();
+	Stage proposStage = (Stage) chercherBtn.getScene().getWindow();
 	FXMLLoader loader = new FXMLLoader(getClass().getResource(AUTHENTIFICATION));
 	Pane rootPane = (Pane) loader.load();
 	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
-	decoStage.setTitle("Annuaire Informatisé par FHF");
-	decoStage.setScene(scene);
-	decoStage.show();
-	decoStage.getIcons().add(new Image(
-		    "C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\iconeTel.jpg"));
+	proposStage.setTitle("Annuaire Informatisé par FHF");
+	proposStage.setScene(scene);
+	proposStage.show();
     }
 
     // IMPRIMER LA LISTE EN PDF//
@@ -260,40 +162,22 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	alert.showAndWait();
     }
 
-    // METHODE SUPPRIMER STAGIAIRE//
-    @FXML
-    public void supprStagiaire() {
-	Stagiaire stagiaire = tblS.getSelectionModel().getSelectedItem();
-	if (stagiaire != null) {
-	    Alert suppressionAlerte = new Alert(AlertType.CONFIRMATION);
-	    suppressionAlerte.setTitle("Suppression d'un stagiaire");
-	    suppressionAlerte.setHeaderText("Êtes-vous sûr de vouloir supprimer ce stagiaire ?");
-	    Optional<ButtonType> option = suppressionAlerte.showAndWait();
-	    if (option.get() == ButtonType.OK) {
-		monArbre.supprimer(stagiaire);
-		tblS.getSelectionModel().clearSelection();
-		tblS.getItems().clear();
-		tblS.getItems().addAll(Recherche.parcoursStagiaire(monArbre));
 
-	    } else {
-	    }
-	}
-    }
 
     public void rechercheSimple() {
 	String keyword = critere.getText().toUpperCase();
 	if (keyword.equals("")) {
-	    tblS.setItems(observableArrayList);
+		tblS.setItems(observableArrayList);
 	} else {
-	    ObservableList<Stagiaire> filteredData = FXCollections.observableArrayList();
-	    for (Stagiaire stg : observableArrayList) {
-		if (stg.getNom().contains(keyword) || stg.getAnnee().contains(keyword)
-			|| stg.getDepartement().contains(keyword))
-		    filteredData.add(stg);
-	    }
-	    tblS.setItems(filteredData);
+		ObservableList<Stagiaire> filteredData = FXCollections.observableArrayList();
+		for (Stagiaire stg : observableArrayList) {
+			if (stg.getNom().contains(keyword) || stg.getAnnee().contains(keyword)
+					|| stg.getDepartement().contains(keyword))
+				filteredData.add(stg);
+		}
+		tblS.setItems(filteredData);
 	}
-    }
+}
 
     // METHODE POUR OUVRIR LE MANUEL D'UTILISATION//
     public void ouvrirManuelPdf() {
@@ -312,8 +196,8 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 
 	}
     }
-
-    // RECHERCHE MULTICRITERE//
+    
+    //RECHERCHE MULTICRITERE//
 
     // METHODE POUR IMPRIMER LA LISTE SOUS FORMAT PDF//
     private void pdf(List<Stagiaire> list) throws FileNotFoundException, DocumentException {

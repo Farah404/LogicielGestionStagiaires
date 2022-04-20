@@ -66,6 +66,7 @@ public class InterfaceAuthentificationCtrl {
 	    if (nomUtilisateurTxtField.getText().equals(fmtLogin) && mdpPassField.getText().equals(fmtMdp)) {
 		try {
 		    allerVersInterfaceFormateur();
+		    
 		} catch (IOException e1) {
 		    e1.printStackTrace();
 		}
@@ -109,9 +110,9 @@ public class InterfaceAuthentificationCtrl {
 
     public void setStage(Stage primaryStage) {
 
-	}
+    }
 
-    //METHODE POUR ALLER A LA FENETRE A PROPOS//
+    // METHODE POUR ALLER A LA FENETRE A PROPOS//
     @FXML
     private void AllerVersPropos() throws IOException {
 	propos.getScene().getWindow();
@@ -154,7 +155,7 @@ public class InterfaceAuthentificationCtrl {
 	proposStage.setScene(scene);
 	proposStage.show();
     }
-    
+
     // METHODE ALERTE//
     public void alerteConnexion() throws IOException {
 	Alert alert = new Alert(AlertType.ERROR);

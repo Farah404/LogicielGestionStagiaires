@@ -32,22 +32,22 @@ public class Noeud {
 	this.droit = droit;
     }
 
-    //NOEUD PARENT STAGIAIRE//
+    // NOEUD PARENT STAGIAIRE//
     public Stagiaire getStagiaire() {
 	return stagiaire;
     }
 
-    //NOEUD FILS GAUCHE//
+    // NOEUD FILS GAUCHE//
     public Noeud getGauche() {
 	return gauche;
     }
 
-    //NOEUD FILS DROIT//
+    // NOEUD FILS DROIT//
     public Noeud getDroit() {
 	return droit;
     }
 
-    //MODIFICATION NOEUD STAGIAIRE PARENT//
+    // MODIFICATION NOEUD STAGIAIRE PARENT//
     public void setStagiaire(Stagiaire stagiaire) {
 	this.stagiaire = stagiaire;
     }
@@ -61,7 +61,6 @@ public class Noeud {
     public void setDroit(Noeud droit) {
 	this.droit = droit;
     }
-
 
     public int getIndex() {
 	return index;

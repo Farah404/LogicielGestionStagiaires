@@ -33,7 +33,7 @@ public class ArbreStagiaire {
 	this.racine = racine;
     }
 
-    //METHODE POUR ACCEDER AU FICHIER DON ET CREER FICHIER BIN//
+    // METHODE POUR ACCEDER AU FICHIER DON ET CREER FICHIER BIN//
 
     public void creationFichierBinaire() {
 	File monFichierBin = new File(PATH_FILE_BIN);
@@ -55,8 +55,8 @@ public class ArbreStagiaire {
 	}
 
     }
-    
-    //CREATION DE L'ARBRE BINAIRE A PARTIR DU FICHIER DON//
+
+    // CREATION DE L'ARBRE BINAIRE A PARTIR DU FICHIER DON//
     private void LectureDon(File monFichier) {
 	String nom = "", prenom = "", departement = "", promotion = "", annee = "";
 	try {
@@ -84,8 +84,8 @@ public class ArbreStagiaire {
 
     private Noeud ArbreFichierBin(Noeud courant) {
 	if (lectureIndexFilsG(courant.getIndex()) != -1) {
-	    courant.setGauche(this.ArbreFichierBin(new Noeud(
-		    lectureStagiaire(lectureIndexFilsG(courant.getIndex())), lectureIndexFilsG(courant.getIndex()))));
+	    courant.setGauche(this.ArbreFichierBin(new Noeud(lectureStagiaire(lectureIndexFilsG(courant.getIndex())),
+		    lectureIndexFilsG(courant.getIndex()))));
 	}
 	if (lectureIndexFilsD(courant.getIndex()) != -1) {
 	    courant.setDroit(this.ArbreFichierBin(new Noeud(lectureStagiaire(lectureIndexFilsD(courant.getIndex())),
@@ -94,7 +94,7 @@ public class ArbreStagiaire {
 	return courant;
     }
 
-    //METHODE LECTURE ET ECRITURE DANS LE FICHIER BINAIRE//
+    // METHODE LECTURE ET ECRITURE DANS LE FICHIER BINAIRE//
 
     private static Noeud ecritureNoeudFichier(Stagiaire x, int indexPere) {
 	int index = 0;
@@ -228,7 +228,7 @@ public class ArbreStagiaire {
 	}
     }
 
-    //METHODE POUR AJOUTER UN NOEUD DONC AJOUTER UN STAGIAIRE//
+    // METHODE POUR AJOUTER UN NOEUD DONC AJOUTER UN STAGIAIRE//
 
     public void ajouter(Stagiaire x) {
 	if (this.racine == null) {
@@ -250,7 +250,7 @@ public class ArbreStagiaire {
 	return courant;
     }
 
-    //METHODE POUR SUPPRIMER UN NOEUD DONC SUPPRIMER UN STAGIAIRE//
+    // METHODE POUR SUPPRIMER UN NOEUD DONC SUPPRIMER UN STAGIAIRE//
 
     public void supprimer(Stagiaire x) {
 	Noeud racineAvant = new Noeud(this.racine.getStagiaire(), 0);
@@ -318,7 +318,7 @@ public class ArbreStagiaire {
 	return dernierDescendant(courant.getDroit());
     }
 
-    //METHODE POUR MODIFIER UN NOEUD DONC MODIFIER UN STAGIARE//
+    // METHODE POUR MODIFIER UN NOEUD DONC MODIFIER UN STAGIARE//
 
     public void modifierNom(Stagiaire stagiaire, String nouveauNom) {
 	Stagiaire ancienStagiaire = stagiaire;

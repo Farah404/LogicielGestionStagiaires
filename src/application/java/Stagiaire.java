@@ -7,7 +7,8 @@ public class Stagiaire implements Comparable<Stagiaire> {
     public static final int TAILLE_DEPARTEMENT = 3;
     public static final int TAILLE_PROMOTION = 30;
     public static final int TAILLE_ANNEE = 4;
-    public static final int TAILLE_STAGIAIRE = TAILLE_NOM + TAILLE_PRENOM + TAILLE_DEPARTEMENT + TAILLE_PROMOTION + TAILLE_ANNEE;
+    public static final int TAILLE_STAGIAIRE = TAILLE_NOM + TAILLE_PRENOM + TAILLE_DEPARTEMENT + TAILLE_PROMOTION
+	    + TAILLE_ANNEE;
     public static final int TAILLE_STAGIAIRE_OCTETS = 2 * TAILLE_STAGIAIRE + 4 * 3;
 
     private String nom;
@@ -66,12 +67,8 @@ public class Stagiaire implements Comparable<Stagiaire> {
 
     @Override
     public String toString() {
-	return "Stagiaire : \n"
-		   + "	Nom " + nom + "\n"
-		   + " Prenom " + prenom + "\n"
-		   + " Departement " + departement +"\n"
-		   + " Promotion " + promotion + "\n"
-		   + " Annee=" + annee ;
+	return "Stagiaire : \n" + "	Nom " + nom + "\n" + " Prenom " + prenom + "\n" + " Departement " + departement
+		+ "\n" + " Promotion " + promotion + "\n" + " Annee=" + annee;
     }
 
     @Override

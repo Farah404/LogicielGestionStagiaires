@@ -28,8 +28,6 @@ public class InterfaceProposCtrl {
     @FXML
     private ImageView goToIsikaWebsiteImg;
 
-
-
     // METHODE POUR ALLER SUR LE SITE ISIKA//
     @FXML
     public void goToIsikaWebsite() throws IOException, URISyntaxException {
@@ -56,13 +54,11 @@ public class InterfaceProposCtrl {
 	Alert alert = new Alert(AlertType.INFORMATION);
 	alert.setTitle("Qui a fait ce projet?");
 	alert.setHeaderText("FHF ANNUAIRE INFORMATISÉ");
-	alert.setContentText("Ce logiciel a été réalisé dans le cadre du projet 1 ISIKA promotion CDA17 par Farah Taleb, Houda Madi et Frederic Ferrie.\n "
-		+"Contact:\n "
-		+"farah-taleb@hotmail.com\n"
-		+" houda.madi.pro@gmail.com\n"
-		+" maurice.ferrie@outlook.fr");
+	alert.setContentText(
+		"Ce logiciel a été réalisé dans le cadre du projet 1 ISIKA promotion CDA17 par Farah Taleb, Houda Madi et Frederic Ferrie.\n "
+			+ "Contact:\n " + "farah-taleb@hotmail.com\n" + " houda.madi.pro@gmail.com\n"
+			+ " maurice.ferrie@outlook.fr");
 	alert.showAndWait();
     }
 
 }
-
