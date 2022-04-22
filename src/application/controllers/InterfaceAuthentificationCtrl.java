@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -132,28 +133,26 @@ public class InterfaceAuthentificationCtrl {
 	d.browse(new URI("https://projet-isika.com/"));
     }
 
-    // METHODE POUR ALLER VERS INTERFACE FORMATEUR//
+ // METHODE POUR ALLER VERS INTERFACE FORMATEUR//
     public void allerVersInterfaceFormateur() throws IOException {
-	propos.getScene().getWindow();
-	FXMLLoader loader = new FXMLLoader(getClass().getResource(INTERFACE_FORMATTEUR));
-	Pane rootPane = (Pane) loader.load();
-	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
-	Stage proposStage = new Stage();
-	proposStage.setTitle("Interface Formateur");
-	proposStage.setScene(scene);
-	proposStage.show();
+    	Stage stage;
+        Parent root;
+    	stage = (Stage) connexionBtn.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource(INTERFACE_FORMATTEUR));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-
-    // METHODE POUR ALLER VERS INTERFACE ADMINISTRATEUR//
+    
+    
     public void allerVersInterfaceAdmin() throws IOException {
-	propos.getScene().getWindow();
-	FXMLLoader loader = new FXMLLoader(getClass().getResource(INTERFACE_ADMINISTRATEUR));
-	Pane rootPane = (Pane) loader.load();
-	Scene scene = new Scene(rootPane, rootPane.getPrefWidth(), rootPane.getPrefHeight());
-	Stage proposStage = new Stage();
-	proposStage.setTitle("Interface Administrateur");
-	proposStage.setScene(scene);
-	proposStage.show();
+        Stage stage;
+        Parent root;
+         stage = (Stage) connexionBtn.getScene().getWindow();
+         root = FXMLLoader.load(getClass().getResource(INTERFACE_ADMINISTRATEUR));
+         Scene scene = new Scene(root);
+         stage.setScene(scene);
+         stage.show();
     }
 
     // METHODE ALERTE//

@@ -222,6 +222,8 @@ public class InterfaceAdministrateurCtrl implements Initializable {
 	rechercheStage.setTitle("Recherche multi-critères");
 	rechercheStage.setScene(scene);
 	rechercheStage.show();
+	rechercheStage.getIcons().add(new Image(
+		    "C:\\Users\\farah\\Desktop\\FormationIsika\\ProjetsEclipse\\LogicielGestionStagiaires\\iconeTel.jpg"));
     }
 
     // METHODE POUR ALLER A LA FENETRE A PROPOS//

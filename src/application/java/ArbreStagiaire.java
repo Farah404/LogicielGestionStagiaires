@@ -109,7 +109,7 @@ public class ArbreStagiaire {
 		raf.writeInt(index);
 		raf.seek(raf.length());
 	    } else
-		raf.seek(0); // si indexPere = -1, la racine change
+		raf.seek(0); 
 	    raf.writeChars(x.getNom());
 	    for (int i = x.getNom().length(); i < 25; i++) {
 		raf.writeChars("*");
